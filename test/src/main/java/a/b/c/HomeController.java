@@ -38,6 +38,8 @@ public class HomeController {
 	
 	public void test() {
 		logger.info("testing");
+		logger.info("testing2");
+		
 	}
 	
 }
