@@ -19,9 +19,15 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1" />
 	</beans:bean>
 	
-	<context:component-scan base-package="a.b.c" />
+	<!-- BeanNameViewResolver - 스프링 빈(Class)기반의 뷰 리졸버 -->	
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0" />
+	</beans:bean>
+	
+	<context:component-scan base-package="member.controller, member.service" />
 	
 	
 	
