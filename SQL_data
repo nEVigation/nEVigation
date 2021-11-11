@@ -1,0 +1,25 @@
+
+DROP TABLE USER_INFO;
+CREATE TABLE user_info (
+	user_no	NUMBER	NOT NULL,
+	charge_type_no	NUMBER	NOT NULL,
+	user_email	VARCHAR2(50)	NULL,
+	user_pw	VARCHAR2(20)	NULL,
+	user_nick	VARCHAR2(20)	NULL,
+	user_type	VARCHAR2(10)	NULL,
+	token	VARCHAR2(50)	NULL
+);
+
+ALTER TABLE user_info DROP CONSTRAINT PK_USER;
+ALTER TABLE user_info ADD CONSTRAINT PK_USER PRIMARY KEY (user_no);
+
+DROP TABLE car_info;
+CREATE TABLE car_info (
+	charge_type_no	NUMBER	NOT NULL,
+	charge_type	VARCHAR2(20)	NULL
+);
+
+ALTER TABLE car_info ADD CONSTRAINT PK_CAR_INFO PRIMARY KEY (charge_type_no);
+
+ALTER TABLE user_info ADD CONSTRAINT FK_car_info_TO_user_info FOREIGN KEY (charge_type_no)
+REFERENCES car_info (charge_type_no);
