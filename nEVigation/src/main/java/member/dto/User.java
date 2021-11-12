@@ -8,6 +8,7 @@ public class User {
 	private String userNick; //	VARCHAR2(20)	NULL,
 	private String userType; //	VARCHAR2(10)	NULL,
 	private String token; //	VARCHAR2(50)	NULL
+	
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", chargeTypeNo=" + chargeTypeNo + ", userEmail=" + userEmail + ", userPw="
