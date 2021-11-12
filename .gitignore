@@ -58,3 +58,7 @@ local.properties
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
+nEVigation/target/m2e-wtp/web-resources/META-INF/maven/a.b/c/pom.properties
+nEVigation/target/classes/nevigation/controller/MainController.class
+nEVigation/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+nEVigation/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
