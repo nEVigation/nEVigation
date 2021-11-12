@@ -96,5 +96,11 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
+	@RequestMapping(value="/findpassword")
+	public void findpassword() {
+		logger.debug("/findpassword");
+		
+	}
+	
 	
 }

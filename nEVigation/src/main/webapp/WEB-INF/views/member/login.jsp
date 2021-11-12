@@ -23,6 +23,12 @@
 	display: inline-flex;
 	color: red;
 }
+.text-right{
+	text-align: right;
+}
+#findPw:hover{
+	cursor:pointer;
+}
 </style>
 
 </head>
@@ -58,6 +64,11 @@
 						</c:if>
 					</div>
 				</div>
+				<div class="form-group text-right">
+					<div class="col-xs-6 col-xs-offset-3">
+					<a id="findPw">비밀번호 찾기</a>					
+					</div>
+				</div>
 				<div class="form-group">
 					<div class="col-xs-offset-5">
 						<button class="btn btn-primary">로그인</button>
@@ -71,4 +82,14 @@
 	</div>
 
 </body>
+
+<script type="text/javascript">
+$(document).on("click","#findPw", function(){
+	console.log("findPw clicked");
+	location.href="/member/findpassword"
+});
+
+</script>
+
+
 </html>
