@@ -47,6 +47,10 @@
 						<input type="text" class="form-control" id="id" name="userEmail"
 							placeholder="아이디" />
 					</div>
+					<div class="help-container">
+						<input id="emailCheck" type="button" value="중복확인" />
+						<div class="hidden" id="emailCheckText"></div>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="nick" class="col-xs-4 control-label">닉네임 : </label>
@@ -102,6 +106,40 @@ $(document).on("mouseenter",".helpicon",function(){
 $(document).on("mouseleave","#helppannel", function(){
 	$(this).addClass('hidden');
 });
+
+$(document).on("click","#emailCheck", function(){
+	checkEmail();
+});
+
+function checkEmail(){
+	var data;
+	data = $("input#id").val();
+	console.log(data);
+	
+	$.ajax({
+		type : "POST",
+		contentType : "application/json",
+		url : "/member/checkemail",
+		data : JSON.stringify(data),
+		dataType : 'json',
+		timeout : 100000,
+		success : function(data) {
+			console.log("SUCCESS: ", data);
+			$("#emailCheckText").removeClass('hidden');
+			if(data > 0){
+				$("#emailCheckText").html("이미 등록된 이메일 입니다");
+			} else {
+				$("#emailCheckText").html("사용 가능한 이메일 입니다");
+			}
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+		},
+		done : function(e) {
+			console.log("DONE");
+		}
+	});
+}
 </script>
 
 </html>

@@ -15,11 +15,23 @@
 	</resultMap>
 
   <select id="selectCntUser" parameterType="member.dto.User" resultType="int">
-	SELECT * FROM USER_INFO
+	SELECT count(*) FROM USER_INFO
 	WHERE user_email = #{userEmail} AND user_pw = #{userPw}
   </select>
+  
+  <select id="selectCntEmail" resultType="int">
+  	SELECT count(*) FROM USER_INFO
+  	WHERE user_email = #{userEmail}
+  </select>
+  
   <select id="selectUserByEmail" parameterType="member.dto.User" resultMap="User">
   	SELECT user_no, charge_type_no, user_email, user_nick, user_type FROM USER_INFO
   	WHERE user_email = #{userEmail}
   </select>
+  
+  <insert id="insertUser" parameterType="member.dto.User">
+  	INSERT INTO USER_INFO (USER_NO, CHARGE_TYPE_NO, USER_EMAIL, USER_PW, USER_NICK, USER_TYPE)
+	VALUES (user_info_seq.nextval, #{chargeTypeNo}, #{userEmail}, #{userPw}, #{userNick}, 'member')
+  </insert>
+  
 </mapper>

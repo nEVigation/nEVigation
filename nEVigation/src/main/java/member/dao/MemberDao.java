@@ -13,12 +13,27 @@ public interface MemberDao {
 	int selectCntUser(User user);
 	
 	/**
+	 * email 이 user_info에 이미 존재하는지 조회
+	 * @param email
+	 * @return
+	 */
+	int selectCntEmail(String email);
+	
+	/**
 	 * id에 해당하는 user_info 테이블을 조회하여 내용을 반환한다
 	 * (비밀번호는 제외한다)
 	 * @param user - userEmail
 	 * @return - 조회된 User dto
 	 */
 	User selectUserByEmail(User user);
+	
+	/**
+	 * 회원정보를 user_info에 삽입한다 
+	 * @param user - User dto
+	 * @return - int
+	 */
+	int insertUser(User user);
+
 	
 	
 }
