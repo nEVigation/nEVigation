@@ -86,7 +86,7 @@
 <script type="text/javascript">
 $(document).on("click","#findPw", function(){
 	console.log("findPw clicked");
-	location.href="/member/findpassword"
+	location.href="/password/request"
 });
 
 </script>

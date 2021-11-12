@@ -34,4 +34,16 @@
 	VALUES (user_info_seq.nextval, #{chargeTypeNo}, #{userEmail}, #{userPw}, #{userNick}, 'member')
   </insert>
   
+  <update id="updateToken" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET token = #{token}
+  	WHERE USER_EMAIL = #{userEmail}
+  </update>
+  
+  <update id="updatePassword" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET USER_PW = #{userPw}
+  	WHERE TOKEN = #{token}
+  </update>
+  
 </mapper>

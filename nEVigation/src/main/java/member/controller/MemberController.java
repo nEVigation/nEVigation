@@ -54,7 +54,7 @@ public class MemberController {
 			ra.addFlashAttribute("status", isLogin);
 			return "redirect:/member/login";
 		}
-		return "redirect:/main";
+		return "redirect:/mainpage";
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
@@ -70,7 +70,7 @@ public class MemberController {
 		
 		if(isJoin) {
 			logger.info("회원가입 성공");
-			return "redirect:/main";
+			return "redirect:/member/login";
 		} else {
 			logger.info("회원가입 실패");
 			return "redirect:/member/join";
@@ -93,14 +93,22 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		logger.debug("/logout");
 		session.invalidate();
-		return "redirect:/main";
+		return "redirect:/mainpage";
 	}
-	
-	@RequestMapping(value="/findpassword")
-	public void findpassword() {
-		logger.debug("/findpassword");
-		
-	}
-	
+
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

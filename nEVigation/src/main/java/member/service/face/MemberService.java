@@ -32,5 +32,19 @@ public interface MemberService {
 	 * @return 
 	 */
 	int checkEmail(String email);
-
+	
+	/**
+	 * 비밀번호 초기화 메일 내부 텍스트를 작성한다.
+	 * @return
+	 */
+	String generateTokenContent(String email);
+	
+	/**
+	 * 새로 비밀번호를 설정한다 
+	 * @param password
+	 * @param token
+	 * @return int - 1.성공 2.실패
+	 */
+	int setPassword(String password, String token);
+	
 }

@@ -33,7 +33,22 @@ public interface MemberDao {
 	 * @return - int
 	 */
 	int insertUser(User user);
+	
+	/**
+	 * 비밀번호 복구를 위한 임시 토큰 입력
+	 * @param email, token
+	 */
+	void updateToken(User user);
+	
+	/**
+	 * token 이 일치하는 행의 USER_PW를 변경한다
+	 * @param password
+	 * @param token
+	 * @return
+	 */
+	int updatePassword(User user);
 
+	
 	
 	
 }
