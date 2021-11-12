@@ -27,7 +27,7 @@
 		<beans:property name="order" value="0" />
 	</beans:bean>
 	
-	<context:component-scan base-package="member.controller, member.service" />
+	<context:component-scan base-package="member.controller, member.service, nevigation.controller" />
 	
 	
 	
