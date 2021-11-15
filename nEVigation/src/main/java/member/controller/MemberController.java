@@ -95,6 +95,11 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/mainpage";
 	}
+	
+	@RequestMapping(value="/notlogin")
+	public void notlogin() {
+		logger.debug("/member/notlogin");
+	}
 
 	
 }

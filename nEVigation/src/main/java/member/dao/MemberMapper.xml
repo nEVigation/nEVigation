@@ -46,4 +46,15 @@
   	WHERE TOKEN = #{token}
   </update>
   
+  <delete id="deleteUser" parameterType="member.dto.User">
+  	DELETE USER_INFO
+  	WHERE user_email = #{userEmail} AND user_pw = #{userPw}  
+  </delete>
+  
+  <update id="changeUserNick" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET USER_NICK = #{userNick}
+  	WHERE USER_EMAIL = #{userEmail}
+  </update>
+  
 </mapper>

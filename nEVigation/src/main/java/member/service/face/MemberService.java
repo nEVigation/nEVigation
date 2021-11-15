@@ -47,4 +47,18 @@ public interface MemberService {
 	 */
 	int setPassword(String password, String token);
 	
+	/**
+	 * 입력된 비밀번호를 확인하고 회원탈퇴를 진행한다
+	 * @param user - userPw, userEmail(from session)
+	 * @return int - 1.성공 0.실패
+	 */
+	int deleteAccount(User user);
+	
+	/**
+	 * 입력된 닉네임으로 회원정보를 변경한다
+	 * @param user
+	 * @return int - 1.성공 0.실패
+	 */
+	int changeNick(User user);
+	
 }

@@ -47,6 +47,20 @@ public interface MemberDao {
 	 * @return
 	 */
 	int updatePassword(User user);
+	
+	/**
+	 * email, pw를 대조하여 행을 삭제한다
+	 * @param user
+	 * @return
+	 */
+	int deleteUser(User user);
+	
+	/**
+	 * email을 조회하여 user_nick을 변경한다
+	 * @param user
+	 * @return
+	 */
+	int changeUserNick(User user);
 
 	
 	

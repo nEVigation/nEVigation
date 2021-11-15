@@ -113,5 +113,14 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+	@Override
+	public int deleteAccount(User user) {
+		return memberDao.deleteUser(user);
+	}
+	
+	@Override
+	public int changeNick(User user) {
+		return memberDao.changeUserNick(user);
+	}
 	
 }
