@@ -14,7 +14,7 @@ public class MainController {
 	//로깅 객체
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@RequestMapping(value="/mainpage")
+	@RequestMapping(value="/main")
 	public void main() {
 		logger.info("/main");
 		
