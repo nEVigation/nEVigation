@@ -21,6 +21,10 @@
 .warning{
 	color: red;
 }
+.order{
+	font-weight: bold;
+    font-size: large;
+}
 </style>
 </head>
 <body>
@@ -31,7 +35,7 @@
 			<form action="/mypage/chgnick" method="post" class="form-horizontal">
 				<div class="form-group">
 				<div class="col-xs-6 col-xs-offset-3">
-					<div class="">변경하고 싶은 닉네임을 입력해 주세요</div>
+					<div class="order">변경하고 싶은 닉네임을 입력해 주세요</div>
 				</div>
 				</div>
 				<div class="form-group">

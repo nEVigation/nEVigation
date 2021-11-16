@@ -142,4 +142,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return result;
 	}
+	
+	@Override
+	public int changeChargeType(User user) {
+		logger.debug("change chargeType invoked");
+		return memberDao.updateChargeType(user);
+	}
 }

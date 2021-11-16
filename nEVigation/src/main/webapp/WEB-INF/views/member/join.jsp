@@ -18,20 +18,20 @@
       rel="stylesheet">
 
 <style type="text/css">
-.hidden {
+.hide {
 	display: none;
 }
 .help-container{
 	display: inline-flex;
 }
 #helppannel{
-	border: 1px solid grey;
-	position:absolute;
-	width: 20%;
-	height: 20%;
-	background-color:white;
+    position: relative;
 }
-
+#helppannel img {
+	position: absolute;
+	top: 0px;
+	right: -85px;
+}
 </style>     
     
 </head>
@@ -49,7 +49,7 @@
 					</div>
 					<div class="help-container">
 						<input id="emailCheck" type="button" value="중복확인" />
-						<div class="hidden" id="emailCheckText"></div>
+						<div class="hide" id="emailCheckText"></div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -79,8 +79,9 @@
 					</div>
 					<div class="help-container">
 					<span class="helpicon material-icons" style="margin-top: 5px;">help</span>
-						<div class="hidden" id="helppannel">
-							타입관련 설명 창 
+						<div class="hide" id="helppannel">
+								<img style="border: 1px solid teal;" width="600px"
+									src="/resources/image/charger_type.png" />
 						</div>
 					</div>
 				</div>
@@ -99,12 +100,12 @@
 
 <script type="text/javascript">
 $(document).on("mouseenter",".helpicon",function(){
-	$('#helppannel').addClass('hidden');
-	$(this).next('#helppannel').removeClass('hidden');
+	$('#helppannel').addClass('hide');
+	$(this).next('#helppannel').removeClass('hide');
 });
 
 $(document).on("mouseleave","#helppannel", function(){
-	$(this).addClass('hidden');
+	$(this).addClass('hide');
 });
 
 $(document).on("click","#emailCheck", function(){
@@ -125,7 +126,7 @@ function checkEmail(){
 		timeout : 100000,
 		success : function(data) {
 			console.log("SUCCESS: ", data);
-			$("#emailCheckText").removeClass('hidden');
+			$("#emailCheckText").removeClass('hide');
 			if(data > 0){
 				$("#emailCheckText").html("이미 등록된 이메일 입니다");
 			} else {

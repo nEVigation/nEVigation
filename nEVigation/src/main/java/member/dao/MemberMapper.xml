@@ -68,4 +68,10 @@
   	WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw} 
   </update>
   
+  <update id="updateChargeType" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET CHARGE_TYPE_NO = #{chargeTypeNo}
+  	WHERE USER_EMAIL = #{userEmail}
+  </update>
+  
 </mapper>

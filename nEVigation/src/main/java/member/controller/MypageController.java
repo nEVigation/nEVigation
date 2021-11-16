@@ -98,7 +98,6 @@ public class MypageController {
 		} else if (result == 0) {
 			return "redirect:/error";
 		}
-		
 		return "redirect:/main";
 	}
 	
@@ -107,8 +106,22 @@ public class MypageController {
 		logger.debug("/mypage/chgcar [GET]");
 	}
 	@RequestMapping(value="/chgcar", method=RequestMethod.POST)
-	public void changeCar(HttpSession session, User user) {
+	public String changeCar(HttpSession session, User user) {
 		logger.debug("/mypage/chgcar [POST]");
+		logger.debug("chargeTypeNo : {}",user.getChargeTypeNo());
+		if((boolean) session.getAttribute("login")) {
+			user.setUserEmail((String)session.getAttribute("id"));
+			if(memberService.changeChargeType(user)>0) {
+				session.setAttribute("chargeType", user.getChargeTypeNo());
+				return "redirect:/mypage/chgcar";
+			} else {
+				logger.debug("charge type change failed");
+				return "redirect:/mypage/chgcar";
+			}
+		} else {
+			logger.debug("no valid login information");
+			return "redirect:/member/login";
+		}
 	}
 	
 	

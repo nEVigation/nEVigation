@@ -68,4 +68,10 @@ public interface MemberService {
 	 */
 	int changePw(User user,String newPw);
 	
+	/**
+	 * 사용자의 차량 충전타입을 변경한다
+	 * @param user
+	 */
+	int changeChargeType(User user);
+	
 }

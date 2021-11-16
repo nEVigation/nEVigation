@@ -79,6 +79,12 @@ public interface MemberDao {
 	 * @return
 	 */
 	int updatePw(HashMap<String, String> password);
+	
+	/**
+	 * userEmail이 일치하는 행의 chargeTypeNo를 업데이트 한다
+	 * @param user
+	 */
+	int updateChargeType(User user);
 
 	
 	
