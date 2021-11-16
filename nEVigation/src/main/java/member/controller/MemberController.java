@@ -54,7 +54,7 @@ public class MemberController {
 			ra.addFlashAttribute("status", isLogin);
 			return "redirect:/member/login";
 		}
-		return "redirect:/mainpage";
+		return "redirect:/main";
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
@@ -93,7 +93,12 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		logger.debug("/logout");
 		session.invalidate();
-		return "redirect:/mainpage";
+		return "redirect:/main";
+	}
+	
+	@RequestMapping(value="/notlogin")
+	public void notlogin() {
+		logger.debug("/member/notlogin");
 	}
 
 	

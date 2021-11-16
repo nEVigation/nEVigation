@@ -82,14 +82,10 @@
 	</div>
 
 </body>
-
 <script type="text/javascript">
 $(document).on("click","#findPw", function(){
 	console.log("findPw clicked");
 	location.href="/password/request"
 });
-
 </script>
-
-
 </html>

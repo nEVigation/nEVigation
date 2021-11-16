@@ -1,5 +1,8 @@
 package member.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import member.dto.User;
 
 public interface MemberDao {
@@ -47,6 +50,41 @@ public interface MemberDao {
 	 * @return
 	 */
 	int updatePassword(User user);
+	
+	/**
+	 * email, pw를 대조하여 행을 삭제한다
+	 * @param user
+	 * @return
+	 */
+	int deleteUser(User user);
+	
+	/**
+	 * email을 조회하여 user_nick을 변경한다
+	 * @param user
+	 * @return
+	 */
+	int changeUserNick(User user);
+	
+	/**
+	 * email과 pw가 일치하는 행의 갯수를 반환한다
+	 * @param user
+	 * @return
+	 */
+	int checkCntPw(User user);
+	
+	/**
+	 * email, userPw가 일치하는 행의 user_pw를  
+	 * newPw로 교체한다
+	 * @param password(list)
+	 * @return
+	 */
+	int updatePw(HashMap<String, String> password);
+	
+	/**
+	 * userEmail이 일치하는 행의 chargeTypeNo를 업데이트 한다
+	 * @param user
+	 */
+	int updateChargeType(User user);
 
 	
 	

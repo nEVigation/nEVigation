@@ -43,6 +43,7 @@ public class PasswordResetController {
 		if (memberService.checkEmail(email) > 0) {
 			//메일 송부(토큰은 service에서 생성) 
 			try {
+				
 				MimeMessage mail = mailSender.createMimeMessage();
 				MimeMessageHelper helper = new MimeMessageHelper(mail, "UTF-8");
 				helper.setFrom("thesoundofgoodby+noreply@gmail.com");
@@ -50,7 +51,14 @@ public class PasswordResetController {
 				helper.setSubject("[nEVigation] 비밀번호 초기화 안내");
 				helper.setText(memberService.generateTokenContent(email), true);
 				
-				mailSender.send(mail);
+				//이메일 전송 Thread 처리
+				new Thread() {
+					@Override
+					public void run() {
+						mailSender.send(mail);
+					}
+				}.start();
+				
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}

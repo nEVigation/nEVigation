@@ -46,4 +46,32 @@
   	WHERE TOKEN = #{token}
   </update>
   
+  <delete id="deleteUser" parameterType="member.dto.User">
+  	DELETE USER_INFO
+  	WHERE user_email = #{userEmail} AND user_pw = #{userPw}  
+  </delete>
+  
+  <update id="changeUserNick" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET USER_NICK = #{userNick}
+  	WHERE USER_EMAIL = #{userEmail}
+  </update>
+  
+  <select id="checkCntPw" parameterType="member.dto.User" resultType="int">
+  	SELECT count(*) FROM USER_INFO
+  	WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw}
+  </select>
+  
+  <update id="updatePw" parameterType="hashmap">
+  	UPDATE USER_INFO
+  	SET USER_PW = #{newPw}
+  	WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw} 
+  </update>
+  
+  <update id="updateChargeType" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET CHARGE_TYPE_NO = #{chargeTypeNo}
+  	WHERE USER_EMAIL = #{userEmail}
+  </update>
+  
 </mapper>
