@@ -1,4 +1,3 @@
-
 DROP TABLE USER_INFO;
 CREATE TABLE user_info (
 	user_no	NUMBER	NOT NULL,
@@ -23,3 +22,62 @@ ALTER TABLE car_info ADD CONSTRAINT PK_CAR_INFO PRIMARY KEY (charge_type_no);
 
 ALTER TABLE user_info ADD CONSTRAINT FK_car_info_TO_user_info FOREIGN KEY (charge_type_no)
 REFERENCES car_info (charge_type_no);
+
+--car_info(5개)
+INSERT INTO car_info ( charge_type_no, charge_type)
+VALUES(1, 'AC단상(5핀)');
+
+INSERT INTO car_info ( charge_type_no, charge_type)
+VALUES(2, 'AC3상(7핀)');
+
+INSERT INTO car_info ( charge_type_no, charge_type)
+VALUES(3, 'DC콤보(CSS Type 1)');
+
+INSERT INTO car_info ( charge_type_no, charge_type)
+VALUES(4, 'DC콤보(CSS Type 2)');
+
+INSERT INTO car_info ( charge_type_no, charge_type)
+VALUES(5, '차데모');
+
+INSERT INTO car_info ( charge_type_no, charge_type)
+VALUES(6, '슈퍼차저');
+
+--uer_info(12개)
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 1, 'red@naver.com', 'red','red','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 2, 'orange@naver.com', 'orange','orange','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 3, 'yellow@naver.com', 'yellow','yellow','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 4, 'green@naver.com', 'green','green','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 5, 'blue@naver.com', 'blue','blue','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 1, 'navy@naver.com', 'navy','navy','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 2, 'purple@naver.com', 'purple','purple','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 1, 'rainbow@naver.com', 'rainbow','rainbow','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 2, 'black@naver.com', 'black','black','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 3, 'white@naver.com', 'white','white','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 4, 'pink@naver.com', 'pink','pink','member', '');
+
+INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
+VALUES ( user_info_seq.nextval, 5, 'color@naver.com', 'color','color','member', '');
+
+commit;
