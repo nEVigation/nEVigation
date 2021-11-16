@@ -53,6 +53,9 @@
   height: 100%;
   padding: 10px;
 }
+.warning{
+	color: red;
+}
 </style>      
 </head>
 <body>
@@ -60,7 +63,8 @@
 		<div class="grid">
 			<header class="page-header">
 				<div class="content">
-					<h1>${nick }님 환영합니다</h1>
+					<h1>${nick }님 환영합니다</h1><br>
+					<p>${status }</p>
 				</div>
 			</header>
 			<aside class="page-leftbar">

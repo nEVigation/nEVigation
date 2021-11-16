@@ -57,4 +57,15 @@
   	WHERE USER_EMAIL = #{userEmail}
   </update>
   
+  <select id="checkCntPw" parameterType="member.dto.User" resultType="int">
+  	SELECT count(*) FROM USER_INFO
+  	WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw}
+  </select>
+  
+  <update id="updatePw" parameterType="hashmap">
+  	UPDATE USER_INFO
+  	SET USER_PW = #{newPw}
+  	WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw} 
+  </update>
+  
 </mapper>

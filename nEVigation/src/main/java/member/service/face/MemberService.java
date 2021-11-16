@@ -61,4 +61,11 @@ public interface MemberService {
 	 */
 	int changeNick(User user);
 	
+	/**
+	 * 비밀번호를 조회하고 일치 시 newPw로 변경한다 
+	 * @param user, newPw
+	 * @return int - 0-업데이트 실패, 1-업데이트 성공, 2-비밀번호 불일치
+	 */
+	int changePw(User user,String newPw);
+	
 }

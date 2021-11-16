@@ -1,5 +1,7 @@
 package member.service.impl;
 
+import java.util.HashMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,4 +125,21 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.changeUserNick(user);
 	}
 	
+	@Override
+	public int changePw(User user, String newPw) {
+		logger.debug("password change invoked");
+		int result;
+		HashMap<String, String> password = new HashMap<>();
+		password.put("userEmail", user.getUserEmail());
+		password.put("userPw", user.getUserPw());
+		password.put("newPw", newPw);
+		logger.debug(password.toString());
+		if (memberDao.checkCntPw(user)>0){
+			result = memberDao.updatePw(password); // 1-업데이트 성공, 0-업데이트 실패
+		} else {
+			logger.debug("password is not matched");
+			result = 2; // 2-비밀번호 불일치
+		}
+		return result;
+	}
 }
