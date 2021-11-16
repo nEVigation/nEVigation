@@ -79,3 +79,5 @@ VALUES ( user_info_seq.nextval, 4, 'pink@naver.com', 'pink','pink','member', '')
 
 INSERT INTO user_info (user_no, charge_type_no, user_email, user_pw, user_nick, user_type, token)
 VALUES ( user_info_seq.nextval, 5, 'color@naver.com', 'color','color','member', '');
+
+commit;
