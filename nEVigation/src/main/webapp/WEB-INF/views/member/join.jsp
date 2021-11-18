@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- 부트스트랩 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<c:import url="../../layout/header.jsp" />
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -32,10 +21,12 @@
 	top: 0px;
 	right: -85px;
 }
+#emailCheckText{
+	padding-top: 7px;
+	margin-left: 5px;
+}
 </style>     
-    
-</head>
-<body>
+
 	<div class="container">
 		<h1>회원가입 페이지</h1>
 		<hr>
@@ -48,7 +39,7 @@
 							placeholder="아이디" />
 					</div>
 					<div class="help-container">
-						<input id="emailCheck" type="button" value="중복확인" />
+						<input id="emailCheck" class="btn" type="button" value="중복확인" />
 						<div class="hide" id="emailCheckText"></div>
 					</div>
 				</div>
@@ -96,7 +87,6 @@
 			</form>
 		</div>
 	</div>
-</body>
 
 <script type="text/javascript">
 $(document).on("mouseenter",".helpicon",function(){
@@ -127,10 +117,14 @@ function checkEmail(){
 		success : function(data) {
 			console.log("SUCCESS: ", data);
 			$("#emailCheckText").removeClass('hide');
-			if(data > 0){
+			if(data == 1){
 				$("#emailCheckText").html("이미 등록된 이메일 입니다");
-			} else {
+			} else if (data == 0) {
 				$("#emailCheckText").html("사용 가능한 이메일 입니다");
+			} else if (data == 2){
+				$("#emailCheckText").html("이메일을 입력해 주십시오");
+			} else {
+				$("#emailCheckText").html("올바른 형식의 이메일을 입력해 주십시오");
 			}
 		},
 		error : function(e) {
@@ -142,5 +136,4 @@ function checkEmail(){
 	});
 }
 </script>
-
-</html>
+<c:import url="../../layout/footer.jsp" />    

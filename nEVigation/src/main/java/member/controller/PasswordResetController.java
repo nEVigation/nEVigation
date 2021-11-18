@@ -72,12 +72,19 @@ public class PasswordResetController {
 	}
 	
 	@RequestMapping(value="/change", method=RequestMethod.GET)
-	public void inputPassword(@RequestParam(required=false)String token, HttpSession session) {
-		//3. token 일치여부확인 하여 신규 비밀번호 입력창으로 보냄
+	public String inputPassword(@RequestParam(required=false)String token, HttpSession session, RedirectAttributes ra) {
+		//3. 신규 비밀번호 입력창으로 보낸 뒤 token값을 session에 입력
 		// - 신규비밀번호 입력 시 /password/change [POST]로 비밀번호 전달
 		logger.debug("[GET] token : {}", token);
-		session.setAttribute("token", token);
-		
+		if(memberService.checkToken(token)>0) {
+			logger.debug("[GET] 올바른token");
+			session.setAttribute("token", token);
+			return "redirect:/password/change";
+		} else {
+			logger.debug("[GET] token is not valid");
+			ra.addFlashAttribute("status", "token is not valid");
+			return "redirect:/password/request";
+		}
 	}
 	
 	@RequestMapping(value="/change", method=RequestMethod.POST)
@@ -88,7 +95,7 @@ public class PasswordResetController {
 		logger.debug("password1 : {}", password);
 		logger.debug("password2 : {}", password2);
 		logger.debug("[POST] token : {}", token);
-		if(password.equals(password2)) {
+		if(password.equals(password2)) { //비밀번호 확인 절차
 			logger.debug("password matched");
 			if(memberService.setPassword(password, token)>0) {
 				logger.debug("password changed");

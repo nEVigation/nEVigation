@@ -74,4 +74,11 @@ public interface MemberService {
 	 */
 	int changeChargeType(User user);
 	
+	/**
+	 * token값이 존재하는지 count한다
+	 * @param token
+	 * @return int
+	 */
+	int checkToken(String token);
+	
 }

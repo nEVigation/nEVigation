@@ -81,11 +81,20 @@ public class MemberController {
 	@RequestMapping(value="/checkemail", method=RequestMethod.POST)
 	public int checkEmailExist(@RequestBody String email) {
 		logger.debug("/checkemail");
-		logger.debug(email);
+		logger.debug("email : {}", email);
 		Gson gson = new Gson();
 		String checkEmail = gson.fromJson(email, String.class);
-		
-		int result = memberService.checkEmail(checkEmail);
+		logger.debug("email(after unmarshal)  : {}", checkEmail);
+		//1-중복아이디 발견, 0-이메일 생성가능, 2-빈칸, 3-이메일형식이 아님
+		int result;
+		if("".equals(checkEmail) || checkEmail == null) {
+			result = 2;
+		} else {
+			result = memberService.checkEmail(checkEmail);
+			if(!checkEmail.contains("@") && !checkEmail.contains(".")) {
+				result = 3;
+			}
+		}
 		return result;
 	}
 	
@@ -100,20 +109,4 @@ public class MemberController {
 	public void notlogin() {
 		logger.debug("/member/notlogin");
 	}
-
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -106,8 +106,10 @@ public class MemberServiceImpl implements MemberService {
 		User user = new User();
 		user.setUserPw(password);
 		user.setToken(token);
+		user.setUserEmail(memberDao.selectEmailByToken(token));
 		if (memberDao.updatePassword(user) > 0) {
 			logger.debug("password changed");
+			memberDao.updateTokenToVoid(user);
 			return 1;
 		} else {
 			logger.debug("token is not matched!");
@@ -147,5 +149,10 @@ public class MemberServiceImpl implements MemberService {
 	public int changeChargeType(User user) {
 		logger.debug("change chargeType invoked");
 		return memberDao.updateChargeType(user);
+	}
+	
+	@Override
+	public int checkToken(String token) {
+		return memberDao.selectCntToken(token);
 	}
 }

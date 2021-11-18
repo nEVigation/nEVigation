@@ -1,19 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- 부트스트랩 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<c:import url="../../layout/header.jsp" />
 
 <style type="text/css">
 .hidden {
@@ -31,8 +19,6 @@
 }
 </style>
 
-</head>
-<body>
 	<div class="container">
 		<h1>로그인 페이지</h1>
 		<hr>
@@ -80,12 +66,10 @@
 		</div>
 
 	</div>
-
-</body>
 <script type="text/javascript">
 $(document).on("click","#findPw", function(){
 	console.log("findPw clicked");
 	location.href="/password/request"
 });
 </script>
-</html>
+<c:import url="../../layout/footer.jsp" />

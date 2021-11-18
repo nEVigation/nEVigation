@@ -85,8 +85,24 @@ public interface MemberDao {
 	 * @param user
 	 */
 	int updateChargeType(User user);
-
 	
+	/**
+	 * 비밀번호 찾기 모듈이 수행된 후 토큰값을 null로 업데이트 한다
+	 * @param user
+	 */
+	void updateTokenToVoid(User user);
 	
+	/**
+	 * token값이 일치하는 userEmail을 반환한다
+	 * @return
+	 */
+	String selectEmailByToken(String token);
+	
+	/**
+	 * token이 일치하는 행의 갯수를 반환한다
+	 * @param token
+	 * @return
+	 */
+	int selectCntToken(String token);
 	
 }

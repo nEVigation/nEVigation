@@ -74,4 +74,21 @@
   	WHERE USER_EMAIL = #{userEmail}
   </update>
   
+  <select id="selectEmailByToken" resultType="String">
+  	SELECT user_email
+  	FROM USER_INFO
+  	WHERE token = #{token}
+  </select>
+
+  <update id="updateTokenToVoid" parameterType="member.dto.User">
+  	UPDATE USER_INFO
+  	SET token = ''
+  	WHERE USER_EMAIL = #{userEmail}
+  </update>
+  
+  <select id="selectCntToken" resultType="int">
+  	SELECT count(*)
+  	FROM USER_INFO
+  	WHERE TOKEN = #{token}
+  </select>
 </mapper>
