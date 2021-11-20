@@ -1,5 +1,8 @@
 package member.service.face;
 
+import java.util.ArrayList;
+
+import member.dto.Favorite;
 import member.dto.User;
 
 public interface MemberService {
@@ -80,5 +83,12 @@ public interface MemberService {
 	 * @return int
 	 */
 	int checkToken(String token);
+	
+	/**
+	 * 즐겨찾기 목록을 조회하여 가져온다.
+	 * @param attribute
+	 * @return Favorite.dto로 이루어진 ArrayList
+	 */
+	ArrayList<Favorite> getFavoriteByEmail(String userEmail);
 	
 }

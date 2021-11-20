@@ -91,4 +91,18 @@
   	FROM USER_INFO
   	WHERE TOKEN = #{token}
   </select>
+    
+  <select id="selectNoByEmail" resultType="int">
+  	SELECT user_no
+  	FROM USER_INFO
+  	WHERE USER_EMAIL = #{userEmail}
+  </select>
+  
+  <select id="selectFavoriteByNo" resultType="member.dto.Favorite">
+  	SELECT FAVORITE_NO, USER_NO, EI.STATION_NO, EI.STATION_NAME, EI.STATION_LOC, EI.STATION_LATITUDE, EI.STATION_LONGITUDE FROM FAVORITE_LIST FV
+	INNER JOIN EVSTATION_INFO EI on EI.STATION_NO = FV.STATION_NO
+	WHERE user_no = #{userNo}
+	ORDER BY FAVORITE_NO
+  </select>
+  
 </mapper>

@@ -17,6 +17,11 @@ public class MainController {
 	@RequestMapping(value="/main")
 	public void main() {
 		logger.info("/main");
-		
+	}
+	
+	@RequestMapping(value="/")
+	public String welcome() {
+		logger.info("/main");
+		return "/main";
 	}
 }

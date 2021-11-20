@@ -3,6 +3,7 @@ package member.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import member.dto.Favorite;
 import member.dto.User;
 
 public interface MemberDao {
@@ -104,5 +105,21 @@ public interface MemberDao {
 	 * @return
 	 */
 	int selectCntToken(String token);
+	
+	/**
+	 * userEmail 로  user_no를 조회하여 반환한다
+	 * @param userEmail
+	 * @return
+	 */
+	int selectNoByEmail(String userEmail);
+	
+	/**
+	 * userEmail이 일치하는 favorite_list의 목록을
+	 * EVSTATION_INFO의 station_name, station_loc 와 조인하여 조회한다 
+	 * @param userNo
+	 * @return Favorite(favorite_no, station_no, station_name, station_loc)
+	 */
+	ArrayList<Favorite> selectFavoriteByNo(int userNo);
+
 	
 }

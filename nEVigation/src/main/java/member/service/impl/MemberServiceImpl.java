@@ -1,5 +1,6 @@
 package member.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import member.dao.MemberDao;
+import member.dto.Favorite;
 import member.dto.User;
 import member.service.face.MemberService;
 import member.util.RandomNumberGenerator;
@@ -154,5 +156,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int checkToken(String token) {
 		return memberDao.selectCntToken(token);
+	}
+	
+	@Override
+	public ArrayList<Favorite> getFavoriteByEmail(String userEmail) {
+		Favorite fv = new Favorite();
+		fv.setUser_no(memberDao.selectNoByEmail(userEmail));
+		return memberDao.selectFavoriteByNo(fv.getUser_no());
 	}
 }

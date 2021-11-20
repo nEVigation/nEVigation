@@ -1,5 +1,7 @@
 package member.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -8,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import member.dto.Favorite;
 import member.dto.User;
 import member.service.face.MemberService;
 
@@ -124,10 +128,18 @@ public class MypageController {
 		}
 	}
 	
-	
 	@RequestMapping(value="/favorite", method=RequestMethod.GET)
-	public void favoriteSts(HttpSession session) {
+	public ModelAndView favoriteSts(HttpSession session) {
 		logger.debug("/mypage/favorite [GET]");
+		ModelAndView mav = new ModelAndView();
+		ArrayList<Favorite> list = new ArrayList<>();
+		list = memberService.getFavoriteByEmail((String)session.getAttribute("id"));
+		
+		mav.setViewName("/mypage/favorite");
+		mav.addObject("list", list);
+		
+		logger.debug("list : {}", list);
+		
+		return mav;
 	}
-	
 }
