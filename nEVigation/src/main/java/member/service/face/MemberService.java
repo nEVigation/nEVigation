@@ -90,5 +90,12 @@ public interface MemberService {
 	 * @return Favorite.dto로 이루어진 ArrayList
 	 */
 	ArrayList<Favorite> getFavoriteByEmail(String userEmail);
+
+	/**
+	 * 충전타입 지시자(int)값으로 충전타입이름(String)을 반환한다
+	 * @param attribute
+	 * @return
+	 */
+	String getChargeTypeName(Integer chargeTypeNo);
 	
 }

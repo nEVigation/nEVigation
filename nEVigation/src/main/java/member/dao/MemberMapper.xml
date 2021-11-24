@@ -105,4 +105,10 @@
 	ORDER BY FAVORITE_NO
   </select>
   
+  <select id="selectChargeTypeName" resultType="String">
+  	SELECT CHARGE_TYPE
+  	FROM CAR_INFO
+  	WHERE CHARGE_TYPE_NO = #{chargeTypeNo}
+  </select>
+  
 </mapper>

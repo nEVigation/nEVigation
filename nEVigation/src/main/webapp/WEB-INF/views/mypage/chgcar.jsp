@@ -1,96 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:import url="../../layout/header.jsp" />
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	rel="stylesheet">
 <style type="text/css">
-.warning{
+.warning {
 	color: red;
 }
-.order{
+
+.order {
 	font-weight: bold;
-    font-size: large;
+	font-size: large;
 }
-.hidden{
-	display:none;
+.helpicon {
+	font-size:24px;
 }
-a:hover{
+
+.hidden {
+	display: none;
+}
+a:hover {
 	cursor: pointer;
 }
 </style>
 
-	<div class="container">
-		<h1>차량 정보 변경</h1>
-		<hr>
-		<div>
-			<form id="chargeForm" action="/mypage/chgcar" method="post" class="form-horizontal">
-				<div class="form-group">
-					<input type=hidden />
-					<div class="col-xs-6">
-						<div class="order">충전 타입을 변경해 주세요</div>
-					</div>
+<div class="container">
+	<h1>차량 정보 변경</h1>
+	<hr>
+	<div class="order">
+		현재 충전타입 :
+		<c:choose>
+			<c:when test="${chargeType ==1}">AC단상(5핀)</c:when>
+			<c:when test="${chargeType ==2}">AC3상(7핀)</c:when>
+			<c:when test="${chargeType ==3}">DC콤보(CSS Type 1)</c:when>
+			<c:when test="${chargeType ==4}">DC콤보(CSS Type 2)</c:when>
+			<c:when test="${chargeType ==5}">차데모</c:when>
+			<c:when test="${chargeType ==6}">슈퍼차저</c:when>
+		</c:choose>
+	</div>
+	<br>
+	<div class="">
+		<form id="chargeForm" action="/mypage/chgcar" method="post"	class="form-horizontal">
+			<input type=hidden />
+			<button id="type1" value="1" class="chargeType btn">AC단상(5핀)</button>
+			<button id="type2" value="2" class="chargeType btn">AC3상(7핀)</button>
+			<button id="type3" value="3" class="chargeType btn">DC콤보(CSS Type 1)</button>
+			<button id="type4" value="4" class="chargeType btn">DC콤보(CSS Type 2)</button>
+			<button id="type5" value="5" class="chargeType btn">차데모</button>
+			<button id="type6" value="6" class="chargeType btn">슈퍼차저</button>
+
+			<div class="form-group hidden">
+				<div class="col-xs-offset-5">
+					<button id="chgCar" class="btn btn-primary">돌아가기</button>
 				</div>
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
-						<c:choose>
-							<c:when test="${chargeType ==1}">AC단상(5핀)</c:when> 
-							<c:when test="${chargeType ==2}">AC3상(7핀)</c:when> 
-							<c:when test="${chargeType ==3}">DC콤보(CSS Type 1)</c:when> 
-							<c:when test="${chargeType ==4}">DC콤보(CSS Type 2)</c:when> 
-							<c:when test="${chargeType ==5}">차데모</c:when> 
-							<c:when test="${chargeType ==6}">슈퍼차저</c:when> 
-						</c:choose>
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li role="presentation" value="1" class="chargeType"><a role="menuitem" tabindex="-1"
-							>AC단상(5핀)</a></li>
-						<li role="presentation" value="2" class="chargeType"><a role="menuitem" tabindex="-1"
-							>AC3상(7핀)</a></li>
-						<li role="presentation" value="3" class="chargeType"><a role="menuitem" tabindex="-1"
-							>DC콤보(CSS Type 1)</a></li>
-						<li role="presentation" value="4" class="chargeType"><a role="menuitem" tabindex="-1"
-							>DC콤보(CSS Type 2)</a></li>
-						<li role="presentation" value="5" class="chargeType"><a role="menuitem" tabindex="-1"
-							>차데모</a></li>
-						<li role="presentation" value="6" class="chargeType"><a role="menuitem" tabindex="-1"
-							>슈퍼차저</a></li>
-					</ul>
-				</div>
-				<div class="help-container">
-					<span class="helpicon material-icons" style="margin-top: 5px;">help</span>
-					<div id="helppannel" class="hidden">
-						<img class="chargeImg" width="600px" src="/resources/image/charger_type.png" /> 
-					</div>
-				</div>
-				<div class="form-group hidden">
-					<div class="col-xs-offset-5">
-						<button id="chgCar" class="btn btn-primary">돌아가기</button>
-					</div>
-				</div>
-			</form>
+			</div>
+		</form>
+	</div>
+	<br>
+	<div class="helpicon">
+		타입 구분 방식
+		<span class="helpicon material-icons" style="margin-top: 5px;">help</span>
+		<div id="helppannel" class="hidden">
+			<img class="chargeImg" width="600px" src="/resources/image/charger_type.png" />
 		</div>
 	</div>
-
+</div>
 <script type="text/javascript">
-$('.chargeType').click(function(){
-    $('<input />').attr('type', 'hidden')
-        .attr('name', 'chargeTypeNo')
-        .attr('value', $(this).val())
-        .appendTo('#chargeForm');
-    $('#chargeForm').submit();
-});
-$(document).on("mouseenter",".helpicon",function(){
-	$('#helppannel').addClass('hidden');
-	$(this).next('#helppannel').removeClass('hidden');
-});
+	$('.chargeType').click(	
+			function() {
+				$('<input />').attr('type', 'hidden').attr('name',
+						'chargeTypeNo').attr('value', $(this).val()).appendTo(
+						'#chargeForm');
+				$('#chargeForm').submit();
+	});
+	$(document).on("mouseenter", ".helpicon", function() {
+		$('#helppannel').addClass('hidden');
+		$(this).next('#helppannel').removeClass('hidden');
+	});
 
-$(document).on("mouseleave","#helppannel", function(){
-	$(this).addClass('hidden');
-});
+	$(document).on("mouseleave", "#helppannel", function() {
+		$(this).addClass('hidden');
+	});
+	$(document).ready(function(){
+		var chargeType = "${sessionScope.chargeType}"
+		if($('#type1').val()==chargeType){$('#type1').addClass('btn-primary');}
+		if($('#type2').val()==chargeType){$('#type2').addClass('btn-primary');}
+		if($('#type3').val()==chargeType){$('#type3').addClass('btn-primary');}
+		if($('#type4').val()==chargeType){$('#type4').addClass('btn-primary');}
+		if($('#type5').val()==chargeType){$('#type5').addClass('btn-primary');}
+		if($('#type6').val()==chargeType){$('#type6').addClass('btn-primary');}
+	})
 </script>
 <c:import url="../../layout/footer.jsp" />

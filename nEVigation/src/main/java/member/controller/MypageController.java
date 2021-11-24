@@ -26,9 +26,17 @@ public class MypageController {
 	@Autowired private MemberService memberService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public void mypageMain(HttpSession session) {
+	public ModelAndView mypageMain(HttpSession session) {
 		logger.debug("/mypage");
-		
+		session.setAttribute("chargeTypeName", 
+				(String)memberService.getChargeTypeName((Integer)session.getAttribute("chargeType")) );
+		ModelAndView mav = new ModelAndView();
+		ArrayList<Favorite> list = new ArrayList<>();
+		list = memberService.getFavoriteByEmail((String)session.getAttribute("id"));
+		mav.setViewName("/mypage");
+		mav.addObject("list", list);
+		logger.debug("list : {}", list);
+		return mav;
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
@@ -128,18 +136,18 @@ public class MypageController {
 		}
 	}
 	
-	@RequestMapping(value="/favorite", method=RequestMethod.GET)
-	public ModelAndView favoriteSts(HttpSession session) {
-		logger.debug("/mypage/favorite [GET]");
-		ModelAndView mav = new ModelAndView();
-		ArrayList<Favorite> list = new ArrayList<>();
-		list = memberService.getFavoriteByEmail((String)session.getAttribute("id"));
-		
-		mav.setViewName("/mypage/favorite");
-		mav.addObject("list", list);
-		
-		logger.debug("list : {}", list);
-		
-		return mav;
-	}
+//	@RequestMapping(value="/favorite", method=RequestMethod.GET)
+//	public ModelAndView favoriteSts(HttpSession session) {
+//		logger.debug("/mypage/favorite [GET]");
+//		ModelAndView mav = new ModelAndView();
+//		ArrayList<Favorite> list = new ArrayList<>();
+//		list = memberService.getFavoriteByEmail((String)session.getAttribute("id"));
+//		
+//		mav.setViewName("/mypage/favorite");
+//		mav.addObject("list", list);
+//		
+//		logger.debug("list : {}", list);
+//		
+//		return mav;
+//	}
 }

@@ -120,6 +120,13 @@ public interface MemberDao {
 	 * @return Favorite(favorite_no, station_no, station_name, station_loc)
 	 */
 	ArrayList<Favorite> selectFavoriteByNo(int userNo);
+	
+	/**
+	 * 충전타입 지시자(int)값으로 충전타입이름(String)을 조회한다
+	 * @param chargeTypeNo
+	 * @return
+	 */
+	String selectChargeTypeName(Integer chargeTypeNo);
 
 	
 }

@@ -164,4 +164,10 @@ public class MemberServiceImpl implements MemberService {
 		fv.setUser_no(memberDao.selectNoByEmail(userEmail));
 		return memberDao.selectFavoriteByNo(fv.getUser_no());
 	}
+	
+	@Override
+	public String getChargeTypeName(Integer chargeTypeNo) {
+		return memberDao.selectChargeTypeName(chargeTypeNo);
+	}
 }
+
