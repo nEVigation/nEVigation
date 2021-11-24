@@ -21,6 +21,9 @@
 
 	<div class="container">
 		<h1>로그인 페이지</h1>
+		<c:if test="${status == 4}">
+			<div class="" style="color:blue; font-size:24px">회원가입 완료</div>
+		</c:if>
 		<hr>
 		<div id="loginForm">
 			<form action="/member/login" method="post" class="form-horizontal">
@@ -28,7 +31,7 @@
 					<label for="id" class="col-xs-3 control-label">아이디 : </label>
 					<div class="col-xs-6">
 						<input type="text" class="form-control" id="id" name="userEmail"
-							placeholder="아이디" />
+							placeholder="아이디" value="${tempEmail }"/>
 					</div>
 					<div class="col-xs-6 col-xs-offset-3">
 						<c:if test="${status == 2}">

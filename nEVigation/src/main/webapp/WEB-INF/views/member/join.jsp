@@ -31,12 +31,12 @@
 		<h1>회원가입 페이지</h1>
 		<hr>
 		<div id="joinForm" class="">
-			<form action="/member/join" method="post" class="form-horizontal">
+			<form action="/member/join" method="post" class="form-horizontal" name="joinForm" onsubmit="return validateForm()">
 				<div class="form-group">
-					<label for="id" class="col-xs-4 control-label">아이디 : </label>
+					<label for="id" class="col-xs-4 control-label">이메일 : </label>
 					<div class="col-xs-4">
 						<input type="text" class="form-control" id="id" name="userEmail"
-							placeholder="아이디" />
+							placeholder="이메일" />
 					</div>
 					<div class="help-container">
 						<input id="emailCheck" class="btn" type="button" value="중복확인" />
@@ -47,7 +47,7 @@
 					<label for="nick" class="col-xs-4 control-label">닉네임 : </label>
 					<div class="col-xs-4">
 						<input type="text" class="form-control" id="nick" name="userNick"
-							placeholder="아이디" />
+							placeholder="닉네임" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -66,6 +66,7 @@
 							<option value="3">3 - AC3상 7핀 완속</option>
 							<option value="4">4 - DC차데모 10핀</option>
 							<option value="5">5 - DC콤보 7핀</option>
+							<option value="6">6 - 슈퍼차저</option>
 						</select>
 					</div>
 					<div class="help-container">
@@ -134,6 +135,28 @@ function checkEmail(){
 			console.log("DONE");
 		}
 	});
+}
+function validateForm() {
+	if(document.getElementById('id').value == "" ){
+		alert("이메일을 입력해 주세요");
+		return false;
+	}
+	if(!document.getElementById('id').value.includes('@')){
+		alert("올바른 이메일을 입력해 주세요")
+		return false;
+	}
+	if(!document.getElementById('id').value.includes('.')){
+		alert("올바른 이메일을 입력해 주세요")
+		return false;
+	}
+	if(document.getElementById('nick').value == "" ){
+		alert("닉네임을 입력해 주세요");
+		return false;
+	}
+	if(document.getElementById('password').value == "" ){
+		alert("비밀번호를 입력해 주세요");
+		return false;
+	}
 }
 </script>
 <c:import url="../../layout/footer.jsp" />    

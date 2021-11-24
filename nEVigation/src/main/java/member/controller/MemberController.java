@@ -63,13 +63,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String joinProc(User user) {
+	public String joinProc(User user, RedirectAttributes ra) {
 		logger.debug("USer : {}", user);
 		
 		boolean isJoin = memberService.join(user);
 		
 		if(isJoin) {
 			logger.info("회원가입 성공");
+			ra.addFlashAttribute("status", 4);
+			ra.addFlashAttribute("tempEmail", user.getUserEmail());
 			return "redirect:/member/login";
 		} else {
 			logger.info("회원가입 실패");
