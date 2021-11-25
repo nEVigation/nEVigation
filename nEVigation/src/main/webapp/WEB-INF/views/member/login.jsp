@@ -22,7 +22,7 @@
 	<div class="container">
 		<h1 class="text-center">로그인</h1>
 		<c:if test="${status == 4}">
-			<div class="" style="color:blue; font-size:24px">회원가입 완료</div>
+			<div class="text-center" style="color:blue; font-size:24px">회원가입 완료</div>
 		</c:if>
 		<hr>
 		<div id="loginForm">

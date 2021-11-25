@@ -81,7 +81,7 @@
 				<br>
 				<div class="text-center form-group">
 					<div class="">
-						<button class="btn btn-primary">회원가입</button>
+						<button class="btn btn-primary" id="submitBtn">회원가입</button>
 						<input type="reset" id="cancel" class="btn btn-danger" value="취소" />
 					</div>
 				</div>
@@ -122,6 +122,7 @@ function checkEmail(){
 				$("#emailCheckText").html("이미 등록된 이메일 입니다");
 			} else if (data == 0) {
 				$("#emailCheckText").html("사용 가능한 이메일 입니다");
+				$("#submitBtn").removeAttr('onclick');
 			} else if (data == 2){
 				$("#emailCheckText").html("이메일을 입력해 주십시오");
 			} else {
@@ -136,6 +137,10 @@ function checkEmail(){
 		}
 	});
 }
+$('#id').keypress(function(){
+	$('#submitBtn').attr('onclick', 'alert("이메일 중복확인을 해주세요");return false;');
+})
+
 function validateForm() {
 	if(document.getElementById('id').value == "" ){
 		alert("이메일을 입력해 주세요");

@@ -63,8 +63,16 @@
 		<header class="page-header">
 			<div class="content">
 				<h1>${nick }님 환영합니다</h1>
-				<div style="font-size:15px;">충전타입 : ${chargeTypeName }</div>
-				<p>${status }</p>
+				<div style="font-size:15px;">충전 타입 : 
+				<c:choose>
+					<c:when test="${chargeType ==1}">AC단상(5핀)</c:when>
+					<c:when test="${chargeType ==2}">AC3상(7핀)</c:when>
+					<c:when test="${chargeType ==3}">DC콤보(CSS Type 1)</c:when>
+					<c:when test="${chargeType ==4}">DC콤보(CSS Type 2)</c:when>
+					<c:when test="${chargeType ==5}">차데모</c:when>
+					<c:when test="${chargeType ==6}">슈퍼차저</c:when>
+				</c:choose>
+				</div>
 			</div>
 		</header>
 		<aside class="page-leftbar">
@@ -110,7 +118,8 @@
 				<br>
 				<div class="text-center form-group">
 					<div class="">
-						<button id="chgPw" class="btn btn-primary">비밀번호 변경 변경</button>
+						<button id="chgPw" class="btn btn-primary">비밀번호 변경</button>
+						<a href="/mypage" class="btn btn-danger">돌아가기</a>
 					</div>
 				</div>
 			</form>

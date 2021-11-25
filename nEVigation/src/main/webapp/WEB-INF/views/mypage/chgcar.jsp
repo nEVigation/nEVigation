@@ -75,8 +75,16 @@ a:hover {
 		<header class="page-header">
 			<div class="content">
 				<h1>${nick }님 환영합니다</h1>
-				<div style="font-size:15px;">충전타입 : ${chargeTypeName }</div>
-				<p>${status }</p>
+				<div style="font-size:15px;">충전 타입 : 
+				<c:choose>
+					<c:when test="${chargeType ==1}">AC단상(5핀)</c:when>
+					<c:when test="${chargeType ==2}">AC3상(7핀)</c:when>
+					<c:when test="${chargeType ==3}">DC콤보(CSS Type 1)</c:when>
+					<c:when test="${chargeType ==4}">DC콤보(CSS Type 2)</c:when>
+					<c:when test="${chargeType ==5}">차데모</c:when>
+					<c:when test="${chargeType ==6}">슈퍼차저</c:when>
+				</c:choose>
+				</div>
 			</div>
 		</header>
 		<aside class="page-leftbar">
@@ -92,18 +100,6 @@ a:hover {
 		</aside>
 		<main class="page-main">
 			<div class="content">
-	<div class="order">
-		현재 충전타입 :
-		<c:choose>
-			<c:when test="${chargeType ==1}">AC단상(5핀)</c:when>
-			<c:when test="${chargeType ==2}">AC3상(7핀)</c:when>
-			<c:when test="${chargeType ==3}">DC콤보(CSS Type 1)</c:when>
-			<c:when test="${chargeType ==4}">DC콤보(CSS Type 2)</c:when>
-			<c:when test="${chargeType ==5}">차데모</c:when>
-			<c:when test="${chargeType ==6}">슈퍼차저</c:when>
-		</c:choose>
-	</div>
-	<br>
 	<div class="">
 		<form id="chargeForm" action="/mypage/chgcar" method="post"	class="form-horizontal">
 			<input type=hidden />
@@ -115,9 +111,10 @@ a:hover {
 			<button id="type5" value="5" class="chargeType btn">차데모</button>
 			<button id="type6" value="6" class="chargeType btn">슈퍼차저</button>
 
-			<div class="form-group hidden">
-				<div class="col-xs-offset-5">
-					<button id="chgCar" class="btn btn-primary">돌아가기</button>
+			<div class="form-group text-center">
+				<div class="">
+				<br>
+					<a href="/mypage" class="btn btn-danger">돌아가기</a>
 				</div>
 			</div>
 		</form>

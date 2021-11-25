@@ -13,10 +13,10 @@
 </style>
 
 	<div class="container">
-		<h1 class="warning text-center">로그인을 하셔야 합니다</h1>
+		<h1 class="warning text-center">비로그인 접속 불가</h1>
 		<hr>
 		<div>
-			5초 후 메인페이지로 이동합니다
+			5초 후 메인페이지로 이동합니다<br>
 		</div>
 	</div>
 
