@@ -28,7 +28,7 @@
 </style>     
 
 	<div class="container">
-		<h1>회원가입 페이지</h1>
+		<h1 class="text-center">회원가입</h1>
 		<hr>
 		<div id="joinForm" class="">
 			<form action="/member/join" method="post" class="form-horizontal" name="joinForm" onsubmit="return validateForm()">
@@ -79,8 +79,8 @@
 				</div>
 				<br>
 				<br>
-				<div class="form-group">
-					<div class="col-xs-offset-5">
+				<div class="text-center form-group">
+					<div class="">
 						<button class="btn btn-primary">회원가입</button>
 						<input type="reset" id="cancel" class="btn btn-danger" value="취소" />
 					</div>

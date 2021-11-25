@@ -20,7 +20,7 @@
 </style>
 
 	<div class="container">
-		<h1>로그인 페이지</h1>
+		<h1 class="text-center">로그인</h1>
 		<c:if test="${status == 4}">
 			<div class="" style="color:blue; font-size:24px">회원가입 완료</div>
 		</c:if>
@@ -58,8 +58,8 @@
 					<a id="findPw">비밀번호 찾기</a>					
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-xs-offset-5">
+				<div class="text-center form-group">
+					<div class="">
 						<button class="btn btn-primary">로그인</button>
 						<input type="reset" id="cancel" class="btn btn-danger" value="취소" />
 					</div>

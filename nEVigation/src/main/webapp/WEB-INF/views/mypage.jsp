@@ -10,7 +10,7 @@
 .grid {
     display: grid;
     grid-template-columns: 200px auto;
-    grid-template-rows: 200px minmax(200px, auto) auto;
+    grid-template-rows: 130px minmax(130px, auto) auto;
     grid-template-areas:
         'header header'
         'leftbar main'
@@ -20,6 +20,7 @@
 }
 .page-header {
   grid-area: header;
+  margin: 0;
 }
 .page-leftbar {
   grid-area: leftbar;
@@ -37,6 +38,11 @@
   height: 100%;
   padding: 10px;
 }
+#navi li{
+	list-style-type: none;
+	margin: 20px 0 20px 0;
+	font-size: 1.3em;
+}
 .warning{
 	color: red;
 }
@@ -51,11 +57,7 @@ th{
 tr:hover{
 	background-color: #ddd;
 }
-#navi li{
-	list-style-type: none;
-	margin: 20px 0 20px 0;
-	font: 1.3em;
-}
+
 </style>
 
 <div class="container">
@@ -63,7 +65,7 @@ tr:hover{
 		<header class="page-header">
 			<div class="content">
 				<h1>${nick }님 환영합니다</h1>
-				<div>충전타입 : ${chargeTypeName }</div>
+				<div style="font-size:15px;">충전타입 : ${chargeTypeName }</div>
 				<p>${status }</p>
 			</div>
 		</header>
@@ -100,6 +102,11 @@ tr:hover{
 							<input class="goMap" type="hidden" value="${l.station_longitude }" name="station_longitude" />
 							<input class="goMap" type="hidden" value="${l.station_name }" name="station_name" />
 						</c:forEach>
+						<c:if test="${empty list}">
+							<tr>
+								<td colspan="3">즐겨찾기한 충전소가 없습니다
+							</tr>
+						</c:if>
 						</form>
 					</table>
 				</div>

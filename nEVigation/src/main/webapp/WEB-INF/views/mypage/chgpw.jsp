@@ -6,6 +6,42 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <style type="text/css">
+.grid {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 130px minmax(130px, auto) auto;
+    grid-template-areas:
+        'header header'
+        'leftbar main'
+        'footer footer';
+    column-gap: 20px;
+    row-gap: 20px;
+}
+.page-header {
+  grid-area: header;
+  margin: 0;
+}
+.page-leftbar {
+  grid-area: leftbar;
+}
+
+.page-main {
+  grid-area: main;
+}
+.content {
+  color: #242424;
+  background-color: none;
+  font-weight: 600;
+  text-align: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+}
+#navi li{
+	list-style-type: none;
+	margin: 20px 0 20px 0;
+	font-size: 1.3em;
+}
 .warning{
 	color: red;
 }
@@ -13,20 +49,45 @@
 	font-weight: bold;
     font-size: large;
 }
+.active{
+    background: gainsboro;
+    padding: 8px;
+    color: black;
+    border-radius: 15px;
+    font-weight: 800;
+}
 </style>
 
 	<div class="container">
-		<h1>비밀번호 변경</h1>
-		<hr>
-		<div>
+	<div class="grid">
+		<header class="page-header">
+			<div class="content">
+				<h1>${nick }님 환영합니다</h1>
+				<div style="font-size:15px;">충전타입 : ${chargeTypeName }</div>
+				<p>${status }</p>
+			</div>
+		</header>
+		<aside class="page-leftbar">
+			<div class="content">
+			<ul id="navi">			
+				<li><a href="/mypage/chgnick">닉네임 변경</a></li>
+				<li><a href="/mypage/chgcar">차량 정보 변경</a></li>
+				<li><a href="/mypage/chgpw" class="active">비밀번호 변경</a></li>
+<!-- 				<li><a href="/mypage/favorite">즐겨찾기 충전소</a></li> -->
+				<li><a href="/mypage/delete">회원 탈퇴</a></li>
+			</ul>
+			</div>
+		</aside>
+		<main class="page-main">
+		<div class="content">
 			<form action="/mypage/chgpw" method="post" class="form-horizontal">
 				<div class="form-group">
 				<div class="col-xs-6 col-xs-offset-3">
-					<div class="order">현재 비밀번호와 변경할 비밀번호를 입력해주세요</div>
+					<div class="order"></div>
 				</div>
 				</div>
 				<div class="form-group">
-					<label for="userPw" class="col-xs-3 control-label">현재 비밀번호 입력 : </label>
+					<label for="userPw" class="col-xs-3 control-label">현재 비밀번호 : </label>
 					<div class="col-xs-6">
 						<input type="text" class="form-control" id="userPw" name="userPw"
 							placeholder="현재 비밀번호" />
@@ -40,20 +101,22 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="newPw" class="col-xs-3 control-label">변경 비밀번호 입력 : </label>
+					<label for="newPw" class="col-xs-3 control-label">변경 비밀번호 : </label>
 					<div class="col-xs-6">
 						<input type="text" class="form-control" id="newPw" name="newPw"
 							placeholder="변경 비밀번호" />
 					</div>
 				</div>
 				<br>
-				<div class="form-group">
-					<div class="col-xs-offset-5">
+				<div class="text-center form-group">
+					<div class="">
 						<button id="chgPw" class="btn btn-primary">비밀번호 변경 변경</button>
 					</div>
 				</div>
 			</form>
 		</div>
+		</main>
+	</div>
 	</div>
 	
 <c:import url="../../layout/footer.jsp" />
