@@ -1,95 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=divice-width", initial-scale="1">
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<title>nEVigation</title>
+<c:import url="/WEB-INF/layout/header.jsp" />    
 
-<style type="text/css">
-.loginBtn {
-display:inline-block;
-}
-</style>
+	<!-- <div class="sliderbox">
+		<ul id="slider">
+			<li><p><img style ="width:300px; height:300px; clear:both; float:left;" src="/resources/img/tip1.jpg" align="top"></p>
+			<p><h5>지하주차장을 이용하세요</h5></li>
+			<li><p><img style ="width:300px; height:300px; clear:both; float:left;" src="/resources/img/tip2.jpg" align="top"></p>
+			<p><h6>회생제동을 활용하세요</h6></li>
+			<li><p><img style ="width:300px; height:300px; clear:both; float:left;" src="/resources/img/tip3.jpg" align="top"></p>
+			<p><h6>가끔은 '완충' 해주세요</h6></li>
+			<li><p><img style ="width:300px; height:300px; clear:both; float:left;" src="/resources/img/tip4.jpg" align="top"></p>
+			<p><h6>전기차 경고등을 알아두세요</h6></li>
+		</ul>
+	</div> -->
+	 
+	<br>
+	
+<section>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
 
+<!-- Wrapper for slides -->
 
-</head>
-<body>
+<div class="carousel-inner slideshow center-block .col-lg-" >
+    <div class="item active">
+      <img src="/resources/img/tip1.jpg" alt="tip1"  >
+      <div class="carousel-caption">
+        <h3>지하주차장을 이용하세요</h3>
+      </div>
+    </div>
 
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-			aria-expanded="false">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/main">nEVigation</a>
-		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="/">충전소 찾기</a></li>
-				<li><a href="/">길찾기</a></li>
-				<li><a href="/">충전 타입 설명</a></li>
-				<!-- 	<li style="background-color:blue;"><a href="/login">로그인</a></li> -->
-			</ul>
-			<div class="loginBtn" style="float: left; padding: 8px;">
-				<c:choose>
-					<c:when test="${empty login }">
-						<a href="/member/join"><button class="btn btn-primary">회원가입</button></a>
-						<a href="/member/login"><button class="btn  btn-primary">로그인</button></a>
-					</c:when>
-					<c:when test="${login eq true }">
-						<a href="/mypage"><button class="btn btn-primary">내 정보</button></a>
-						<a href="/member/logout"><button class="btn btn-danger">로그아웃</button></a>
-					</c:when>
-				</c:choose>
-			</div>
-		</div>
+    <div class="item">
+      <img src="/resources/img/tip2.jpg" alt="tip2">
+      <div class="carousel-caption">
+        <h3>회생제동을 활용하세요</h3>
+      </div>
+    </div>
 
-		<!-- <ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"><span class="caret"></span></a>
-				</li>
-			</ul> -->
+    <div class="item">
+      <img src="/resources/img/tip3.jpg" alt="tip3">
+      <div class="carousel-caption">
+        <h3>가끔은 '완충' 해주세요</h3>
+      </div>
+    </div>
+    
+    <div class="item">
+      <img src="/resources/img/tip4.jpg" alt="tip4">
+      <div class="carousel-caption">
+        <h3>전기차 경고등을 알아두세요</h3>
+      </div>
+    </div>
+  </div>
 
- 		
-	</nav>
-<div class="video-area">
-	<video width="100%" src="/resources/video/ev1.mp4" autoplay muted loop></video>
-		
+<!-- Pictogram -->
+<!-- 
+  <div class="carousel-inner slideshow center-block " >
+    <div class="item active">
+      <img src="/resources/img/picto1.png" alt="tip1"  >
+        <h3>회생제동을 활용하세요</h3>
+        <h3>지하주차장을 이용하세요</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="/resources/img/picto2.png" alt="tip2">
+      <div class="carousel-caption">
+        <h3>회생제동을 활용하세요</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="/resources/img/picto3.png" alt="tip3">
+      <div class="carousel-caption">
+        <h3>가끔은 '완충' 해주세요</h3>
+      </div>
+    </div>
+    
+    <div class="item">
+      <img src="/resources/img/picto4.png" alt="tip4">
+      <div class="carousel-caption">
+        <h3>전기차 경고등을 알아두세요</h3>
+      </div>
+    </div>
+  </div>
+ -->
+ 
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
 
+	
+<div class="video-area">
+	<video width="100%" src="/resources/video/ev1.mp4" autoplay muted loop></video>
+</div>
 
+</section>
 
-
-<footer>
-<!-- 	<div class="footer_logo">
-		<img width=100px; src='/resources/img/header_logo2.png' />
-	</div> -->
-	<div class="footer_content">
-		nEVigation <br> TEAM. 강건, 김준홍, 박정서, 최유리, 최현준<br>
-		COPYRIGHT 2021. nEVigation. ALL RIGHTS RESERVED.
-	</div>
-</footer>
-
-</html>
-
-</body>
-</html>
-
+<c:import url="/WEB-INF/layout/footer.jsp" />    
