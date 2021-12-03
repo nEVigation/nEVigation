@@ -74,6 +74,7 @@ public class MypageController {
 			user.setUserEmail((String)session.getAttribute("id"));
 			if (memberService.changeNick(user)>0) {
 				logger.debug("nickname changed");
+				session.setAttribute("nick", user.getUserNick());
 				return "redirect:/mypage";
 			} else {
 				logger.debug("알 수 없는 에러 발생(Update실패)");

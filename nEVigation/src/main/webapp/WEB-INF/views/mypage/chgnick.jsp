@@ -21,6 +21,9 @@
   grid-area: header;
   margin: 0;
 }
+.container{
+	margin-top: 58px;
+}
 .page-leftbar {
   grid-area: leftbar;
 }
@@ -98,7 +101,7 @@
 				<div class="form-group">
 					<label for="userNick" class="col-xs-2 control-label"></label>
 					<div class="col-xs-8">
-						<input type="text" class="form-control" id="userNick" name="userNick"
+						<input type="text" required class="form-control" id="userNick" name="userNick"
 							placeholder="닉네임" />
 					</div>
 				</div>

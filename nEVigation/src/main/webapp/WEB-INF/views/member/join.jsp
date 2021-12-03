@@ -10,6 +10,9 @@
 .hide {
 	display: none;
 }
+.container{
+	margin-top: 58px;
+}
 .help-container{
 	display: inline-flex;
 }
@@ -35,7 +38,7 @@
 				<div class="form-group">
 					<label for="id" class="col-xs-4 control-label">이메일 : </label>
 					<div class="col-xs-4">
-						<input type="text" class="form-control" id="id" name="userEmail"
+						<input type="text" required maxlength="50" class="form-control" id="id" name="userEmail"
 							placeholder="이메일" />
 					</div>
 					<div class="help-container">
@@ -46,7 +49,7 @@
 				<div class="form-group">
 					<label for="nick" class="col-xs-4 control-label">닉네임 : </label>
 					<div class="col-xs-4">
-						<input type="text" class="form-control" id="nick" name="userNick"
+						<input type="text" required maxlength="20" class="form-control" id="nick" name="userNick"
 							placeholder="닉네임" />
 					</div>
 				</div>
@@ -54,7 +57,7 @@
 					<label for="password" class="col-xs-4 control-label">비밀번호 :
 					</label>
 					<div class="col-xs-4">
-						<input type="text" class="form-control" id="password" name="userPw" placeholder="비밀번호" />
+						<input type="text" required maxlength="20" class="form-control" id="password" name="userPw" placeholder="비밀번호" />
 					</div>
 				</div>
 				<div class="form-group">

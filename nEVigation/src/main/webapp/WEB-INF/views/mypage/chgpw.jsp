@@ -24,7 +24,9 @@
 .page-leftbar {
   grid-area: leftbar;
 }
-
+.container{
+	margin-top: 58px;
+}
 .page-main {
   grid-area: main;
 }
@@ -97,7 +99,7 @@
 				<div class="form-group">
 					<label for="userPw" class="col-xs-3 control-label">현재 비밀번호 : </label>
 					<div class="col-xs-6">
-						<input type="text" class="form-control" id="userPw" name="userPw"
+						<input type="text" required class="form-control" id="userPw" name="userPw"
 							placeholder="현재 비밀번호" />
 					</div>
 				</div>
@@ -111,7 +113,7 @@
 				<div class="form-group">
 					<label for="newPw" class="col-xs-3 control-label">변경 비밀번호 : </label>
 					<div class="col-xs-6">
-						<input type="text" class="form-control" id="newPw" name="newPw"
+						<input type="text" required class="form-control" id="newPw" name="newPw"
 							placeholder="변경 비밀번호" />
 					</div>
 				</div>

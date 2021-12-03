@@ -24,7 +24,9 @@
 .page-leftbar {
   grid-area: leftbar;
 }
-
+.container{
+	margin-top: 58px;
+}
 .page-main {
   grid-area: main;
 }
@@ -98,7 +100,7 @@
 				<div class="form-group">
 					<label for="userPw" class="col-xs-2 control-label"></label>
 					<div class="col-xs-8">
-						<input type="text" class="form-control" id="userPw" name="userPw"
+						<input type="text" required class="form-control" id="userPw" name="userPw"
 							placeholder="비밀번호 확인" />
 					</div>
 				</div>

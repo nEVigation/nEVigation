@@ -56,6 +56,10 @@ public class MemberServiceImpl implements MemberService {
 	public boolean join(User user) {
 		logger.debug("user : {}",user);
 		
+		if ((String)user.getUserEmail() == "") {
+			return false;
+		}
+		
 		int isEmailExist = memberDao.selectCntEmail(user.getUserEmail());
 		if (isEmailExist > 0) {
 			logger.debug("이미 등록된 이메일");

@@ -25,7 +25,9 @@
 .page-leftbar {
   grid-area: leftbar;
 }
-
+.container{
+	margin-top: 58px;
+}
 .page-main {
   grid-area: main;
 }
