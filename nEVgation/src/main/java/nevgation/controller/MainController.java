@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-
 	//로깅 객체
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
