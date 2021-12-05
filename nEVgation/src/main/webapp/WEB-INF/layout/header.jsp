@@ -86,8 +86,12 @@ footer {
 						<a href="/member/join"><button class="btn btn-primary">회원가입</button></a>
 						<a href="/member/login"><button class="btn  btn-primary">로그인</button></a>
 					</c:when>
-					<c:when test="${login eq true }">
+					<c:when test="${login eq true && user_type eq 'member'}">
 						<a href="/mypage"><button class="btn  btn-primary">MY PAGE</button></a>
+						<a href="/member/logout"><button class="btn btn-danger">로그아웃</button></a>
+					</c:when>
+					<c:when test="${login eq true && user_type eq 'admin'}">
+						<a href="/admin/userInfoList"><button class="btn  btn-primary">관리자 페이지</button></a>
 						<a href="/member/logout"><button class="btn btn-danger">로그아웃</button></a>
 					</c:when>
 				</c:choose>

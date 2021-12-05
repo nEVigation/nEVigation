@@ -103,7 +103,7 @@ td:not(.active) {
 
 <div class="page">
 
-<c:import url="/WEB-INF/views/layout/navigationBar.jsp" />
+<c:import url="/WEB-INF/layout/navigationBar.jsp" />
 
 <div class="container">
 <div class="boardContainer">

@@ -49,13 +49,13 @@ table, th {
 
 <div class="page">
 
-<c:import url="/WEB-INF/views/layout/navigationBar.jsp" />
+<c:import url="/WEB-INF/layout/navigationBar.jsp" />
 
 <div class="container">
 <div class="boardContainer">
 <span id="title">충전소 신고</span>
 <span style="text-align: bottom;">total : ${paging.totalCount }</span>
-<hr style="margin-top:0px; float : clear; border: 1px solid #ababab; background-color : #ababab;">
+<hr style="margin-top:0px; float : clear;">
 
 <table class="table table-striped table-hover">
 <thead>
@@ -76,8 +76,8 @@ table, th {
 </tbody>
 </table>
 
-<c:import url="/WEB-INF/views/layout/pagingStationDec.jsp" />
-<hr style="margin:0 auto; border: 1px solid #ababab; background-color : #ababab;">
+<c:import url="/WEB-INF/layout/pagingStationDec.jsp" />
+<hr style="margin:0 auto;">
 
 </div><!-- .boardContainer -->
 </div><!-- .container -->
