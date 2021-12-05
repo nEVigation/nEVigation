@@ -59,6 +59,10 @@ th{
 tr:hover{
 	background-color: #ddd;
 }
+.content p {
+	font-size:20px;
+	color:red;
+}
 
 </style>
 

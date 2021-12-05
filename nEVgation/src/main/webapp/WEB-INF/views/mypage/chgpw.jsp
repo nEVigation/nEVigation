@@ -99,7 +99,7 @@
 				<div class="form-group">
 					<label for="userPw" class="col-xs-3 control-label">현재 비밀번호 : </label>
 					<div class="col-xs-6">
-						<input type="text" required class="form-control" id="userPw" name="userPw"
+						<input type="text" required class="form-control" id="userPw" name="user_pw"
 							placeholder="현재 비밀번호" />
 					</div>
 				</div>
@@ -113,7 +113,7 @@
 				<div class="form-group">
 					<label for="newPw" class="col-xs-3 control-label">변경 비밀번호 : </label>
 					<div class="col-xs-6">
-						<input type="text" required class="form-control" id="newPw" name="newPw"
+						<input type="text" required class="form-control" id="newPw" name="new_pw"
 							placeholder="변경 비밀번호" />
 					</div>
 				</div>

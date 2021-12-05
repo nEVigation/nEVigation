@@ -46,20 +46,22 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public String deleteAccountProc(HttpSession session, User_info user) {
+	public String deleteAccountProc(HttpSession session, User_info user, RedirectAttributes ra) {
 		logger.debug("/mypage/delete [POST]");
 		if((boolean) session.getAttribute("login")) {
 			user.setUser_email((String)session.getAttribute("id"));
 			if (memberService.deleteAccount(user)>0) {
 				logger.debug("delete account complete");
-				return "redirect:/mainpage";
+				session.invalidate();
+				return "redirect:/main";
 			} else {
 				logger.debug("잘못된 비밀번호 입력");
+				ra.addFlashAttribute("status", "잘못된 비밀번호 입력");
 				return "redirect:/mypage/delete";
 			}
 		} else {
 			logger.debug("no valid login information");
-			return "redirect:/mainpage";
+			return "redirect:/main";
 		}
 	}
 	
@@ -75,7 +77,7 @@ public class MypageController {
 			user.setUser_email((String)session.getAttribute("id"));
 			if (memberService.changeNick(user)>0) {
 				logger.debug("nickname changed");
-				session.setAttribute("nick", user.getUser_email());
+				session.setAttribute("nick", user.getUser_nick());
 				return "redirect:/mypage";
 			} else {
 				logger.debug("알 수 없는 에러 발생(Update실패)");
@@ -83,7 +85,7 @@ public class MypageController {
 			}
 		} else {
 			logger.debug("no valid login information");
-			return "redirect:/mainpage";
+			return "redirect:/main";
 		}
 	}
 	
@@ -92,13 +94,13 @@ public class MypageController {
 		logger.debug("/mypage/chgpw [GET]");
 	}
 	@RequestMapping(value="/chgpw", method=RequestMethod.POST)
-	public String changePw(HttpSession session, User_info user, String newPw, RedirectAttributes ra) {
+	public String changePw(HttpSession session, User_info user, String new_pw, RedirectAttributes ra) {
 		logger.debug("/mypage/chgpw [POST]");
 		//0-업데이트 실패, 1-업데이트 성공, 2-비밀번호 불일치
 		int result;
 		if((boolean) session.getAttribute("login")) {
 			user.setUser_email((String)session.getAttribute("id"));
-			result = memberService.changePw(user, newPw); 
+			result = memberService.changePw(user, new_pw); 
 		} else {
 			logger.debug("no valid login information");
 			return "redirect:/member/login";

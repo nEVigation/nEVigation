@@ -38,7 +38,7 @@
 				<div class="form-group">
 					<label for="id" class="col-xs-4 control-label">이메일 : </label>
 					<div class="col-xs-4">
-						<input type="text" required maxlength="50" class="form-control" id="id" name="userEmail"
+						<input type="text" required maxlength="50" class="form-control" id="id" name="user_email"
 							placeholder="이메일" />
 					</div>
 					<div class="help-container">
@@ -49,7 +49,7 @@
 				<div class="form-group">
 					<label for="nick" class="col-xs-4 control-label">닉네임 : </label>
 					<div class="col-xs-4">
-						<input type="text" required maxlength="20" class="form-control" id="nick" name="userNick"
+						<input type="text" required maxlength="20" class="form-control" id="nick" name="user_nick"
 							placeholder="닉네임" />
 					</div>
 				</div>
@@ -57,13 +57,13 @@
 					<label for="password" class="col-xs-4 control-label">비밀번호 :
 					</label>
 					<div class="col-xs-4">
-						<input type="text" required maxlength="20" class="form-control" id="password" name="userPw" placeholder="비밀번호" />
+						<input type="text" required maxlength="20" class="form-control" id="password" name="user_pw" placeholder="비밀번호" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="chargeTypeSelector" class="col-xs-4 control-label" >충전타입 : </label>
 					<div class="col-xs-4">
-						<select class="form-control" name="chargeTypeNo">
+						<select class="form-control" name="charge_type_no">
 							<option value="1">1 - AC단상 5핀</option>
 							<option value="2">2 - AC3상 7핀 급속</option>
 							<option value="3">3 - AC3상 7핀 완속</option>

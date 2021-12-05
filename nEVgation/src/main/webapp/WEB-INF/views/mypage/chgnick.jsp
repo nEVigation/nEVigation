@@ -101,7 +101,7 @@
 				<div class="form-group">
 					<label for="userNick" class="col-xs-2 control-label"></label>
 					<div class="col-xs-8">
-						<input type="text" required class="form-control" id="userNick" name="userNick"
+						<input type="text" required class="form-control" id="userNick" name="user_nick"
 							placeholder="닉네임" />
 					</div>
 				</div>
