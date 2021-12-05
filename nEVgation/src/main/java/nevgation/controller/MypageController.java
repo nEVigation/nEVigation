@@ -52,11 +52,10 @@ public class MypageController {
 			user.setUser_email((String)session.getAttribute("id"));
 			if (memberService.deleteAccount(user)>0) {
 				logger.debug("delete account complete");
-				session.invalidate();
 				return "redirect:/main";
 			} else {
 				logger.debug("잘못된 비밀번호 입력");
-				ra.addFlashAttribute("status", "잘못된 비밀번호 입력");
+				ra.addFlashAttribute("status", "잘못된 비밀번호를 입력하셨습니다");
 				return "redirect:/mypage/delete";
 			}
 		} else {
@@ -124,7 +123,7 @@ public class MypageController {
 	@RequestMapping(value="/chgcar", method=RequestMethod.POST)
 	public String changeCar(HttpSession session, User_info user) {
 		logger.debug("/mypage/chgcar [POST]");
-		logger.debug("chargeTypeNo : {}",user.getCharge_type_no());
+		logger.debug("charge_type_no : {}",user.getCharge_type_no());
 		if((boolean) session.getAttribute("login")) {
 			user.setUser_email((String)session.getAttribute("id"));
 			if(memberService.changeChargeType(user)>0) {

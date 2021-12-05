@@ -140,9 +140,9 @@ public class MemberServiceImpl implements MemberService {
 		logger.debug("password change invoked");
 		int result;
 		HashMap<String, String> password = new HashMap<>();
+		password.put("new_pw", new_pw);
 		password.put("user_email", user.getUser_email());
 		password.put("user_pw", user.getUser_pw());
-		password.put("new_pw", new_pw);
 		logger.debug(password.toString());
 		if (memberDao.checkCntPw(user)>0){
 			result = memberDao.updatePw(password); // 1-업데이트 성공, 0-업데이트 실패

@@ -103,7 +103,6 @@
 						<input type="text" required class="form-control" id="userPw" name="user_pw"
 							placeholder="비밀번호 확인" />
 					</div>
-					<div class="col-xs-6" style="margin-top:10px">${status }</div>
 				</div>
 				<div class="text-center form-group">
 					<div class="">
