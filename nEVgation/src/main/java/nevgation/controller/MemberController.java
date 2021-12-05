@@ -47,6 +47,7 @@ public class MemberController {
 			session.setAttribute("nick", userinfo.getUser_nick());
 			session.setAttribute("chargeType", userinfo.getCharge_type_no());
 			session.setAttribute("user_no", userinfo.getUser_no());
+			session.setAttribute("user_type", userinfo.getUser_type());
 		} else if (isLogin == 2) {
 			logger.debug("아이디 없음");
 			ra.addFlashAttribute("status", isLogin);

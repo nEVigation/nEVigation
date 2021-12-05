@@ -23,6 +23,15 @@
 			<beans:bean class="nevgation.util.LoginInterceptor" />
 		</interceptor>
 	</interceptors>
+	
+	<!-- 인터셉터 설정 in servlet-context.xml -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**" />
+			<exclude-mapping path="/admin/unprivilegedUser"/>
+			<beans:bean class="nevgation.util.AdminInterceptor" />
+		</interceptor>
+	</interceptors>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />

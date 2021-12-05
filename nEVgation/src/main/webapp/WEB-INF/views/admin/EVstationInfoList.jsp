@@ -49,7 +49,7 @@ table, th {
 
 <div class="page">
 
-<c:import url="/WEB-INF/views/layout/navigationBar.jsp" />
+<c:import url="/WEB-INF/layout/navigationBar.jsp" />
 
 <div class="container">
 <div class="boardContainer">
@@ -81,7 +81,7 @@ table, th {
 </tbody>
 </table>
 
-<c:import url="/WEB-INF/views/layout/pagingEVstationInfo.jsp" />
+<c:import url="/WEB-INF/layout/pagingEVstationInfo.jsp" />
 <hr>
 </div><!-- .boardContainer -->
 </div><!-- .container -->

@@ -477,4 +477,9 @@ public class adminController {
 		
 		return "redirect:/admin/stationReviewList";
 	}
+	
+	@RequestMapping(value="/unprivilegedUser")
+	public void  unprivilegedUser() {
+		logger.debug("/admin/unprivilegedUser");
+	}
 }

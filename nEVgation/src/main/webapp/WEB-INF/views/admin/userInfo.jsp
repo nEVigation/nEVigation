@@ -168,7 +168,7 @@ td{
 
 <div class="page">
 
-<c:import url="/WEB-INF/views/layout/navigationBar.jsp" />
+<c:import url="/WEB-INF/layout/navigationBar.jsp" />
 
 <div class="container">
 <div class="boardContainer">
@@ -205,6 +205,9 @@ td{
 		<th>회원 타입</th>
 		<c:if test="${viewBoard.user_type eq 'member'}">
 			<td>일반 회원</td>
+		</c:if>
+		<c:if test="${viewBoard.user_type eq 'admin'}">
+			<td>관리자</td>
 		</c:if>
 	</tr>
 	<tr>
