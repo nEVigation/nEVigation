@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nevgation.dao.face.DecDao">
+<!-- 
+	<resultMap type="nevigation.dto.Dec" id="Dec">
+		<id column="board_no" property="boardNo"/>
+		<result column="writer_id" property="writerId"/>
+		<result column="writer_nick" property="writerNick"/>
+		<result column="write_date" property="writeDate"/>
+	</resultMap>
+	 -->
+	<insert id="insertDec" parameterType="nevgation.dto.Station_Dec">
+ 		<selectKey order="BEFORE" resultType="int" keyProperty="dec_no">
+ 			SELECT station_dec_seq.nextval FROM dual
+ 		</selectKey>
+ 		
+ 		INSERT INTO station_dec (dec_no, user_no, station_no, dec_type, dec_date)
+ 		VALUES (#{dec_no}, #{user_no}, #{station_no}, #{dec_type}, to_char(sysdate, 'YYYYmmDD'))
+ 		
+ 	</insert>
+
+</mapper>
+

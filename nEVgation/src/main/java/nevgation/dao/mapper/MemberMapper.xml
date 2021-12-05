@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="nevgation.dao.face.MemberDao">
+
+  <select id="selectCntUser" parameterType="nevgation.dto.User_info" resultType="int">
+	SELECT count(*) FROM USER_INFO
+	WHERE user_email = #{user_email} AND user_pw = #{user_pw}
+  </select>
+  
+  <select id="selectCntEmail" resultType="int" parameterType="nevgation.dto.User_info">
+  	SELECT count(*) FROM USER_INFO
+  	WHERE user_email = #{user_email}
+  </select>
+  
+  <select id="selectUserByEmail" parameterType="nevgation.dto.User_info" resultType="nevgation.dto.User_info">
+  	SELECT user_no, charge_type_no, user_email, user_nick, user_type FROM USER_INFO
+  	WHERE user_email = #{user_email}
+  </select>
+  
+  <insert id="insertUser" parameterType="nevgation.dto.User_info">
+  	INSERT INTO USER_INFO (USER_NO, CHARGE_TYPE_NO, USER_EMAIL, USER_PW, USER_NICK, USER_TYPE)
+	VALUES (user_info_seq.nextval, #{charge_type_no}, #{user_email}, #{user_pw}, #{user_nick}, 'member')
+  </insert>
+  
+  <update id="updateToken" parameterType="nevgation.dto.User_info">
+  	UPDATE USER_INFO
+  	SET token = #{token}
+  	WHERE USER_EMAIL = #{user_email}
+  </update>
+  
+  <update id="updatePassword" parameterType="nevgation.dto.User_info">
+  	UPDATE USER_INFO
+  	SET USER_PW = #{user_pw}
+  	WHERE TOKEN = #{token}
+  </update>
+  
+  <delete id="deleteUser" parameterType="nevgation.dto.User_info">
+  	DELETE USER_INFO
+  	WHERE user_email = #{user_email} AND user_pw = #{user_pw}  
+  </delete>
+  
+  <update id="changeUserNick" parameterType="nevgation.dto.User_info">
+  	UPDATE USER_INFO
+  	SET USER_NICK = #{user_nick}
+  	WHERE USER_EMAIL = #{user_email}
+  </update>
+  
+  <select id="checkCntPw" parameterType="nevgation.dto.User_info" resultType="int">
+  	SELECT count(*) FROM USER_INFO
+  	WHERE USER_EMAIL = #{user_email} AND USER_PW = #{user_pw}
+  </select>
+  
+  <update id="updatePw" parameterType="hashmap">
+  	UPDATE USER_INFO
+  	SET USER_PW = #{newPw}
+  	WHERE USER_EMAIL = #{user_email} AND USER_PW = #{user_pw} 
+  </update>
+  
+  <update id="updateChargeType" parameterType="nevgation.dto.User_info">
+  	UPDATE USER_INFO
+  	SET CHARGE_TYPE_NO = #{charge_type_no}
+  	WHERE USER_EMAIL = #{user_email}
+  </update>
+  
+  <select id="selectEmailByToken" resultType="String">
+  	SELECT user_email
+  	FROM USER_INFO
+  	WHERE token = #{token}
+  </select>
+
+  <update id="updateTokenToVoid" parameterType="nevgation.dto.User_info">
+  	UPDATE USER_INFO
+  	SET token = ''
+  	WHERE USER_EMAIL = #{user_email}
+  </update>
+  
+  <select id="selectCntToken" resultType="int">
+  	SELECT count(*)
+  	FROM USER_INFO
+  	WHERE TOKEN = #{token}
+  </select>
+    
+  <select id="selectNoByEmail" resultType="int">
+  	SELECT user_no
+  	FROM USER_INFO
+  	WHERE USER_EMAIL = #{user_email}
+  </select>
+  
+  <select id="selectFavoriteByNo" resultType="nevgation.dto.Favorite_list">
+  	SELECT FAVORITE_NO, USER_NO, EI.STATION_NO, EI.STATION_NAME, EI.STATION_LOC, EI.STATION_LATITUDE, EI.STATION_LONGITUDE FROM FAVORITE_LIST FV
+	INNER JOIN EVSTATION_INFO EI on EI.STATION_NO = FV.STATION_NO
+	WHERE user_no = #{user_no}
+	ORDER BY FAVORITE_NO
+  </select>
+  
+  <select id="selectChargeTypeName" resultType="String">
+  	SELECT CHARGE_TYPE
+  	FROM CAR_INFO
+  	WHERE CHARGE_TYPE_NO = #{charge_type_no}
+  </select>
+  
+</mapper>

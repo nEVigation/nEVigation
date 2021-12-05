@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="nevgation.dao.face.AdminDao">
+
+	<select id="selectUserAll" resultType="int">
+		SELECT count(*) FROM User_info
+	</select>
+	
+	<select id="selectUserList" resultType="nevgation.dto.User_info" parameterType="nevgation.util.Paging">		
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT 
+					user_no, charge_type_no, user_email, user_pw
+					, user_nick, user_type, token
+				FROM User_info
+				ORDER BY user_no DESC
+			) B
+		) BOARD
+		WHERE rnum BETWEEN #{startNo } AND #{endNo } 
+	</select>
+	
+	<select id="selectEVstationAll" resultType="int">
+		SELECT count(*) FROM EVstation_info
+	</select>
+	
+	<select id="selectEVstationList" resultType="nevgation.dto.EVstation_info" parameterType="nevgation.util.Paging">		
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT 
+					station_no, station_name, station_loc, station_start_time
+					, station_end_time, slow_charger, slow_charger_cnt, 
+					quick_charger, quick_charger_cnt, quick_charger_type
+					, parking_fee, station_address, station_latitude
+					, station_longitude, station_state
+				FROM EVstation_info
+				ORDER BY station_no DESC
+			) B
+		) BOARD
+		WHERE rnum BETWEEN #{startNo } AND #{endNo } 
+	</select>
+	
+	<select id="selectstationReportAll" resultType="int">
+		SELECT count(*) FROM Station_report
+	</select>
+	
+	<select id="selectstationReportList" resultType="nevgation.dto.Station_report" parameterType="nevgation.util.Paging">		
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT 
+					report_no, user_no, station_no, report_title
+					, report_content, report_date, report_check
+				FROM Station_report
+				ORDER BY report_no DESC
+			) B
+		) BOARD
+		WHERE rnum BETWEEN #{startNo } AND #{endNo } 
+	</select>
+	
+	<select id="selectstationDecAll" resultType="int">
+		SELECT count(*) FROM Station_Dec
+	</select>
+	
+	<select id="selectstationDecList" resultType="nevgation.dto.Station_Dec" parameterType="nevgation.util.Paging">		
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT 
+					dec_no, user_no, station_no, dec_type, dec_date
+				FROM Station_Dec
+				ORDER BY dec_no DESC
+			) B
+		) BOARD
+		WHERE rnum BETWEEN #{startNo } AND #{endNo } 
+	</select>
+
+	<select id="selectstationReviewAll" resultType="int">
+		SELECT count(*) FROM Station_review
+	</select>
+	
+	<select id="selectstationReviewList" resultType="nevgation.dto.Station_review" parameterType="nevgation.util.Paging">		
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT 
+					review_no, station_no, user_no, review_content, review_date
+				FROM Station_review
+				ORDER BY review_no DESC
+			) B
+		) BOARD
+		WHERE rnum BETWEEN #{startNo } AND #{endNo } 
+	</select>
+	
+	<select id="selectUserByUserno" resultType="nevgation.dto.User_info" parameterType="nevgation.dto.User_info">		
+		SELECT 
+			user_no, charge_type_no, user_email, user_pw
+			, user_nick, user_type, token
+		FROM User_info
+		WHERE user_no = #{user_no }
+	</select>
+	
+	<update id="blockUser" parameterType="nevgation.dto.User_info">
+		update User_info SET token = 'N'
+		WHERE user_no = #{user_no}	
+	</update>
+	
+	<update id="unblockUser" parameterType="nevgation.dto.User_info">
+		update User_info SET token = 'Y'
+		WHERE user_no = #{user_no}	
+	</update>
+	
+<!-- 	회원삭제 -->
+	<delete id="deleteReportByUserNo" parameterType="nevgation.dto.User_info">
+		DELETE FROM Station_report
+		WHERE user_no = #{user_no}
+	</delete>
+	
+	<delete id="deleteDecByUserNo" parameterType="nevgation.dto.User_info">
+		DELETE FROM Station_Dec
+		WHERE user_no = #{user_no}
+	</delete>
+	
+	<delete id="deleteReviewByUserNo" parameterType="nevgation.dto.User_info">
+		DELETE FROM Station_review
+		WHERE user_no = #{user_no}
+	</delete>
+	
+	<delete id="deleteUser" parameterType="nevgation.dto.User_info">
+		DELETE FROM User_info
+		WHERE user_no = #{user_no}
+	</delete>
+	
+	<select id="selectChargeTypeByChargeNO" resultType="String" parameterType="nevgation.dto.User_info">
+		SELECT charge_type
+		FROM Car_info
+		WHERE charge_type_no = #{charge_type_no }
+	</select>
+	
+	<select id="selectEVstationByStationno" resultType="nevgation.dto.EVstation_info" parameterType="nevgation.dto.EVstation_info">		
+		SELECT 
+			station_no, station_name, station_loc, station_start_time, station_end_time
+			, slow_charger, slow_charger_cnt, quick_charger, quick_charger_cnt
+			, quick_charger_type, parking_fee, station_address, station_latitude
+			, station_longitude, station_state
+		FROM EVstation_info
+		WHERE station_no = #{station_no }
+	</select>
+	
+<!-- 	주유소 삭제 -->
+	<delete id="deleteReportBystationNo" parameterType="nevgation.dto.EVstation_info">
+		DELETE FROM Station_report
+		WHERE station_no = #{station_no}
+	</delete>
+	
+	<delete id="deleteDecBystationNo" parameterType="nevgation.dto.EVstation_info">
+		DELETE FROM Station_Dec
+		WHERE station_no = #{station_no}
+	</delete>
+	
+	<delete id="deleteReviewBystationNo" parameterType="nevgation.dto.EVstation_info">
+		DELETE FROM Station_review
+		WHERE station_no = #{station_no}
+	</delete>
+	<delete id="deleteStation" parameterType="nevgation.dto.EVstation_info">
+		DELETE FROM EVstation_info
+		WHERE station_no = #{station_no}
+	</delete>
+	
+	<update id="updateStation" parameterType="nevgation.dto.EVstation_info">
+		UPDATE EVstation_info SET 
+		station_name=#{station_name}, station_loc=#{station_loc}, station_start_time=#{station_start_time}
+		, station_end_time=#{station_end_time}, slow_charger=#{slow_charger}, slow_charger_cnt=#{slow_charger_cnt}
+		, quick_charger=#{quick_charger}, quick_charger_cnt=#{quick_charger_cnt}
+		, quick_charger_type=#{quick_charger_type}, parking_fee=#{parking_fee}, station_address=#{station_address}
+		, station_latitude=#{station_latitude}, station_longitude=#{station_longitude}, station_state=#{station_state} 
+		WHERE station_no = #{station_no}
+	</update>
+	
+	<update id="activationStation" parameterType="nevgation.dto.EVstation_info">
+		update EVstation_info SET station_state = 1
+		WHERE station_no = #{station_no}	
+	</update>
+	
+	<insert id="insertEVstation" parameterType="nevgation.dto.EVstation_info">
+		INSERT INTO EVstation_info 
+		(station_no, station_name, station_loc, station_start_time, station_end_time
+		, slow_charger, slow_charger_cnt, quick_charger, quick_charger_cnt, quick_charger_type
+		, parking_fee, station_address, station_latitude, station_longitude, station_state) 
+		VALUES ( EVstation_info_seq.nextval, #{station_name}, #{station_loc}, #{station_start_time}, #{station_end_time}
+		, #{slow_charger}, #{slow_charger_cnt}, #{quick_charger}, #{quick_charger_cnt}, #{quick_charger_type}
+		, #{parking_fee}, #{station_address}, #{station_latitude}, #{station_longitude}, #{station_state})
+		
+	</insert>
+	
+	<select id="selectStationReportByReportNo" resultType="nevgation.dto.Station_report" parameterType="nevgation.dto.Station_report">		
+		SELECT 
+			report_no, user_no, station_no, report_title, report_content, report_date, report_check
+		FROM Station_report
+		WHERE report_no = #{report_no }
+	</select>
+	
+	<update id="checkReportByReportNo" parameterType="int">
+		UPDATE Station_report
+		SET report_check=1
+		WHERE report_no = #{report_no }
+	</update>
+	
+	<delete id="deleteReport" parameterType="nevgation.dto.Station_report">
+		DELETE FROM Station_report
+		WHERE report_no = #{report_no}
+	</delete>
+	
+	<select id="selectStationDecByDecNo" resultType="nevgation.dto.Station_Dec" parameterType="nevgation.dto.Station_Dec">		
+		SELECT dec_no, user_no, station_no, dec_type, dec_date
+		FROM Station_Dec
+		WHERE dec_no = #{dec_no}
+	</select>
+	
+	<update id="disabledStation" parameterType="nevgation.dto.Station_Dec">
+		update EVstation_info SET station_state = 0
+		WHERE station_no = #{station_no}	
+	</update>
+	
+	<select id="selectStationReviewByReviewNo" resultType="nevgation.dto.Station_review" parameterType="nevgation.dto.Station_review">		
+		SELECT review_no, station_no, user_no, review_content, review_date
+		FROM Station_review
+		WHERE review_no = #{review_no}
+	</select>
+	
+	<delete id="deleteReview" parameterType="nevgation.dto.Station_review">
+		DELETE FROM Station_review
+		WHERE review_no = #{review_no}
+	</delete>
+	
+	<select id="selectUserNickByUserNO" resultType="String" parameterType="int">
+		SELECT user_nick
+		FROM User_info
+		WHERE user_no = #{user_no }
+	</select>
+	
+	<select id="selectStationNameByStationNo" resultType="String" parameterType="int">
+		SELECT station_name
+		FROM EVstation_info
+		WHERE station_no = #{station_no}
+	</select>
+	
+	<select id="selectCarInfoList" resultType="nevgation.dto.Car_info">
+		SELECT charge_type_no, charge_type
+		FROM Car_info
+		ORDER BY charge_type_no DESC
+	</select>
+</mapper>
