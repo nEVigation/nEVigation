@@ -138,7 +138,7 @@ a:hover {
 	$('.chargeType').click(	
 			function() {
 				$('<input />').attr('type', 'hidden').attr('name',
-						'chargeTypeNo').attr('value', $(this).val()).appendTo(
+						'charge_type_no').attr('value', $(this).val()).appendTo(
 						'#chargeForm');
 				$('#chargeForm').submit();
 	});

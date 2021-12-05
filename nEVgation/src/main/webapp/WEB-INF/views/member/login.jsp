@@ -33,7 +33,7 @@
 				<div class="form-group">
 					<label for="id" class="col-xs-3 control-label">아이디 : </label>
 					<div class="col-xs-6">
-						<input type="text" required class="form-control" id="id" name="userEmail"
+						<input type="text" required class="form-control" id="id" name="user_email"
 							placeholder="아이디" value="${tempEmail }"/>
 					</div>
 					<div class="col-xs-6 col-xs-offset-3">
@@ -48,7 +48,7 @@
 					</label>
 					<div class="col-xs-6">
 						<input type="text" required class="form-control" id="password"
-							name="userPw" placeholder="비밀번호" />
+							name="user_pw" placeholder="비밀번호" />
 					</div>
 					<div class="col-xs-6 col-xs-offset-3">
 						<c:if test="${status == 3}">

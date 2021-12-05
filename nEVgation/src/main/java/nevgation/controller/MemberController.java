@@ -66,7 +66,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String joinProc(User_info user, RedirectAttributes ra) {
-		logger.debug("USer : {}", user);
+		logger.debug("User : {}", user);
 		
 		boolean isJoin = memberService.join(user);
 		

@@ -100,9 +100,10 @@
 				<div class="form-group">
 					<label for="userPw" class="col-xs-2 control-label"></label>
 					<div class="col-xs-8">
-						<input type="text" required class="form-control" id="userPw" name="userPw"
+						<input type="text" required class="form-control" id="userPw" name="user_pw"
 							placeholder="비밀번호 확인" />
 					</div>
+					<div class="col-xs-6" style="margin-top:10px">${status }</div>
 				</div>
 				<div class="text-center form-group">
 					<div class="">

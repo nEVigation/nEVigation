@@ -55,7 +55,7 @@
   
   <update id="updatePw" parameterType="hashmap">
   	UPDATE USER_INFO
-  	SET USER_PW = #{newPw}
+  	SET USER_PW = #{new_pw}
   	WHERE USER_EMAIL = #{user_email} AND USER_PW = #{user_pw} 
   </update>
   
