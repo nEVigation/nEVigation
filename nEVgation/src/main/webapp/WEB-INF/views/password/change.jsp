@@ -6,8 +6,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
+<style type="text/css">
+.container{
+	margin-top: 58px;
+}
+</style>
+
 	<div class="container">
-		<h1>비밀번호 변경</h1>
+		<h1 class="text-center">비밀번호 변경</h1>
 		<hr>
 		<div>
 			<form action="/password/change" method="post" class="form-horizontal">

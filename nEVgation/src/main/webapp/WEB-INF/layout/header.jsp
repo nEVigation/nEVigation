@@ -76,7 +76,7 @@ footer {
 		</div>
 		<div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li class="nav-item"><a href="/">충전소 찾기<span class="sr-only"></span></a></li>
+				<li class="nav-item"><a href="/map/main">충전소 찾기<span class="sr-only"></span></a></li>
 				<li class="nav-item"><a href="/">길찾기</a></li>
 				<li class="nav-item"><a href="/">충전 타입 설명</a></li>
 			</ul>

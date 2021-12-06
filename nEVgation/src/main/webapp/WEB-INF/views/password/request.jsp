@@ -9,10 +9,13 @@
 .warning{
 	color: red;
 }
+.container{
+	margin-top: 58px;
+}
 </style>
 
 	<div class="container">
-		<h1>비밀번호 찾기</h1>
+		<h1 class="text-center">비밀번호 찾기</h1>
 		<hr>
 		<div>
 			<form action="/password/request" method="post" class="form-horizontal">

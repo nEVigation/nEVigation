@@ -65,7 +65,7 @@ function makeOutListener(infowindow) {
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2326f00a3bd3eea8b0b3d6d8722b998"></script>
 	<script>
 		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
+		if (navigator.geolocation){
 
 				// GeoLocation을 이용해서 접속 위치를 얻어옵니다
 				navigator.geolocation.getCurrentPosition(function(position) {
@@ -166,7 +166,7 @@ function makeOutListener(infowindow) {
 			    	});
 				});
 				
-		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+		} else { //HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 		
 			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = '사용자 위치를 사용 할 수 없습니다. 다시 설정해주세요.'
 

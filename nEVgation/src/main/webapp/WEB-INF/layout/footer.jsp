@@ -52,7 +52,7 @@ getLocation();
 		<p style="font:bold; font-family:arial; padding-right: 20px;;">nEVigation</p>
 	</div> 
 	
-	<div class="footer_content">
+	<div class="footer_content" style="margin-top: 9px;">
 		<span id="loc" style="font-weight:bold"></span> 에서 접속중
 		<br> TEAM. 강건, 김준홍, 박정서, 최유리, 최현준<br>
 		COPYRIGHT 2021. nEVigation. ALL RIGHTS RESERVED.
