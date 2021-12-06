@@ -19,6 +19,20 @@
 
 <c:import url="/WEB-INF/layout/OverlayStyle.jsp"></c:import>
 
+<style type="text/css">
+.favorite{
+    position: absolute;
+    top: -3px;
+    right: 35px;
+    color: black;
+    width: 17px;
+    height: 17px;
+    font-size: 23px;
+}
+.favorite:hover{
+	cursor: pointer;
+}
+</style>
 <script type="text/javascript">
 
 //인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -134,12 +148,42 @@ function makeOutListener(infowindow) {
 		    	  closeBtn.onclick = function() { customOverlay.setMap(null); };
 		    	  title.appendChild(closeBtn);
 		    	  
-// 		    	  var favoriteBtn = document.createElement('div');
-// 		    	  closeBtn.setAttribute('class', 'favorite');
-// 		    	  closeBtn.appendChild(document.createTextNode(' '));
-// 		    	  closeBtn.onclick = function() { customOverlay.setMap(null); };
-// 		    	  title.appendChild(closeBtn);
-		    	  
+		    	  var favoriteBtn = document.createElement('div');
+		    	  favoriteBtn.setAttribute('class', 'favorite');
+		    	  favoriteBtn.appendChild(document.createTextNode('☆ '));
+		    	  favoriteBtn.onclick = function() { addFavorite(); };
+		    	  title.appendChild(favoriteBtn);
+	   	  
+		    	  function addFavorite(){
+		    			var data;
+		    			data = pos.title;
+		    			console.log(data);
+		    			$.ajax({
+		    				type : "POST",
+		    				contentType : "application/json",
+		    				url : "/mypage/favorite",
+		    				data : JSON.stringify(data),
+		    				dataType : 'json',
+		    				timeout : 100000,
+		    				success : function(data) {
+		    					console.log("SUCCESS: ", data);
+		    					if(data == 1){
+		    						$(".favorite").html("★");
+		    					} else if (data == 0) {
+		    						return;
+		    					} else if (data == 2){
+		    						return;
+		    					} 
+		    				},
+		    				error : function(e) {
+		    					console.log("ERROR: ", e);
+		    				},
+		    				done : function(e) {
+		    					console.log("DONE");
+		    				}
+		    			});
+		    		}
+
 		    	  var body = document.createElement('div');
 		    	  body.setAttribute('class', 'body');
 		    	  body.appendChild(document.createTextNode('시작 시간 : ' + pos.start_time));

@@ -3,6 +3,8 @@ package nevgation.dao.face;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.annotations.Param;
+
 import nevgation.dto.Favorite_list;
 import nevgation.dto.User_info;
 
@@ -129,6 +131,27 @@ public interface MemberDao {
 	 * @return
 	 */
 	String selectChargeTypeName(Integer chargeTypeNo);
+	
+	/**
+	 * user_no와 favNo 를 favorite_list DB에 입력한다
+	 * @param user_no
+	 * @param favNo
+	 * @return
+	 */
+	int insertFavorite(@Param("user_no")int user_no, @Param("station_no")int station_no);
+	
+	/** 충전소 이름으로 번호 조회
+	 * 
+	 * @param name
+	 * @return
+	 */
+	int getStationNoByName(String name);
+
+	/** 충전소 번호가 이미 추가되어있는지 확인
+	 * 
+	 * @return
+	 */
+	int countStsNo(@Param("user_no")int user_no, @Param("station_no")int station_no);
 
 	
 }

@@ -98,4 +98,12 @@ public interface MemberService {
 	 */
 	String getChargeTypeName(Integer chargeTypeNo);
 	
+	/**
+	 * station_no를 받아와서 즐겨찾기 추가
+	 * @param favNo
+	 * @param favNo2 
+	 * @return
+	 */
+	int addFavorite(int user_no, String name);
+	
 }

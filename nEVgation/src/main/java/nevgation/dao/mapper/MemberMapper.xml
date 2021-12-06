@@ -102,4 +102,19 @@
   	WHERE CHARGE_TYPE_NO = #{charge_type_no}
   </select>
   
+  <select id="getStationNoByName" resultType="int">
+  	SELECT station_no FROM EVSTATION_INFO
+	WHERE station_name = #{name}
+  </select>
+    
+  <insert id="insertFavorite">
+  	INSERT INTO FAVORITE_LIST (FAVORITE_NO, USER_NO, STATION_NO)
+	VALUES (FAVORITE_LIST_SEQ.nextval, #{user_no}, #{station_no})
+  </insert>
+  
+  <select id="countStsNo" resultType="int">
+  	SELECT count(*) FROM FAVORITE_LIST
+  	WHERE USER_NO = #{user_no} AND STATION_NO = #{station_no}
+  </select>
+  
 </mapper>

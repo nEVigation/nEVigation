@@ -175,5 +175,19 @@ public class MemberServiceImpl implements MemberService {
 	public String getChargeTypeName(Integer chargeTypeNo) {
 		return memberDao.selectChargeTypeName(chargeTypeNo);
 	}
+	
+	@Override
+	public int addFavorite(int user_no, String name) {
+		int station_no = memberDao.getStationNoByName(name);
+		logger.debug("user_no, station_no : " + user_no + ", " + station_no);
+		int isExist = memberDao.countStsNo(user_no, station_no);
+		if(isExist == 1) {
+			return 0;
+		} else if (isExist == 0){	
+			return memberDao.insertFavorite(user_no, station_no);
+		} else {
+			return 2;
+		}
+	}
 }
 

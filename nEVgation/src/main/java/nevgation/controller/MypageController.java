@@ -8,10 +8,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import nevgation.dto.Favorite_list;
 import nevgation.dto.User_info;
@@ -139,18 +143,19 @@ public class MypageController {
 		}
 	}
 	
-//	@RequestMapping(value="/favorite", method=RequestMethod.GET)
-//	public ModelAndView favoriteSts(HttpSession session) {
-//		logger.debug("/mypage/favorite [GET]");
-//		ModelAndView mav = new ModelAndView();
-//		ArrayList<Favorite> list = new ArrayList<>();
-//		list = memberService.getFavoriteByEmail((String)session.getAttribute("id"));
-//		
-//		mav.setViewName("/mypage/favorite");
-//		mav.addObject("list", list);
-//		
-//		logger.debug("list : {}", list);
-//		
-//		return mav;
-//	}
+	@ResponseBody
+	@RequestMapping(value="/favorite", method=RequestMethod.POST)
+	public int addFavorite(@RequestBody String station_name, HttpSession session) {
+	  Gson gson = new Gson();
+	  String name = gson.fromJson(station_name, String.class);
+	  int user_no = (int) session.getAttribute("user_no");
+	  //0-이미있음, 1-추가함, 2-빈칸
+	  int result;
+	  if("".equals(name) || name == null) {
+	    result = 2;
+	  } else {
+	    result = memberService.addFavorite(user_no, name);
+	  }
+	  return result;
+	}
 }
