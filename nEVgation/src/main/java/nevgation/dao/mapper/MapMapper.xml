@@ -5,19 +5,36 @@
   
   <mapper namespace="nevgation.dao.face.MapDao">
   
-  <select id="selectAllStation" resultType="nevgation.dto.EVstation_info">
-  SELECT * FROM EVSTATION_INFO
-  ORDER BY STATION_NO
+  <select id="selectAllStation" resultType="nevgation.dto.EVstation_info" parameterType="nevgation.util.Paging">
+  		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT *
+				FROM EVSTATION_INFO
+				ORDER BY STATION_NO
+			) B
+		) EVSTATION
+		WHERE rnum BETWEEN #{startNo } AND #{endNo } 
   </select>
   
   <select id="selectAllStationCnt" resultType="int">
   SELECT count(*) FROM EVSTATION_INFO
   </select>
   
-  <select id="selectStationByStationName" parameterType="String" resultType="nevgation.dto.EVstation_info">
-  SELECT * FROM EVSTATION_INFO
+  <select id="selectStationByStationNameCnt" resultType="int" parameterType="String">
+  SELECT count(*) FROM EVSTATION_INFO
   WHERE station_name LIKE #{stationName}
-  ORDER BY STATION_NO
+  </select>
+  
+  <select id="selectStationByStationName" parameterType="Map" resultType="nevgation.dto.EVstation_info">
+ 	 SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT *
+				FROM EVSTATION_INFO
+				WHERE station_name LIKE #{stationName}
+				ORDER BY STATION_NO
+			) B
+		) EVSTATION
+	WHERE rnum BETWEEN #{startNo } AND #{endNo } 
   </select>
   
   </mapper>
